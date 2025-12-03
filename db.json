@@ -1,0 +1,100 @@
+{
+  "users": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "username": "juan_perez",
+      "email": "juan@email.com",
+      "encryptedPassword": "$2a$10$hashedpassword123",
+      "roles": ["USER"],
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "username": "maria_garcia",
+      "email": "maria@email.com",
+      "encryptedPassword": "$2a$10$hashedpassword456",
+      "roles": ["USER"],
+      "createdAt": "2024-02-20T14:45:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "username": "profesor_ingles",
+      "email": "teacher@english.com",
+      "encryptedPassword": "$2a$10$hashedpassword789",
+      "roles": ["USER"],
+      "createdAt": "2023-11-10T09:15:00Z"
+    }
+  ],
+
+  "courses": [
+    {
+      "id": "660e8400-e29b-41d4-a716-446655440000",
+      "title": "Inglés para Principiantes",
+      "description": "Aprende inglés desde cero con lecciones interactivas",
+      "price": 49.99,
+      "language": "Inglés",
+      "level": "BÁSICO",
+      "teacherId": "550e8400-e29b-41d4-a716-446655440002",
+      "durationHours": "30",
+      "createdAt": "2024-01-10T08:00:00Z"
+    },
+    {
+      "id": "660e8400-e29b-41d4-a716-446655440001",
+      "title": "Francés Intermedio",
+      "description": "Mejora tu fluidez en conversaciones en francés",
+      "price": 79.99,
+      "language": "Francés",
+      "level": "INTERMEDIO",
+      "teacherId": "550e8400-e29b-41d4-a716-446655440000",
+      "durationHours": "10",      
+      "createdAt": "2024-02-05T11:30:00Z"
+    },
+    {
+      "id": "660e8400-e29b-41d4-a716-446655440002",
+      "title": "Alemán Avanzado",
+      "description": "Perfecciona tu alemán para contextos profesionales",
+      "price": 99.99,
+      "language": "Alemán",
+      "level": "C1",
+      "teacherId": "550e8400-e29b-41d4-a716-446655440002",
+      "durationHours": "12",
+      "createdAt": "2024-03-01T14:20:00Z",
+        "tags": ["profesional", "avanzado", "certificación"]
+    }
+  ],
+
+  "shoppingCarts": [
+  ],
+
+  "cartItems": [
+  ],
+
+  "orders": [
+  ],
+
+  "orderItems": [
+  ],
+
+  "roles": [
+    { "id": 1, "name": "USER"},
+    { "id": 2, "name": "ADMIN"}
+  ],
+  "languages": [
+    { "id": 1, "name": "Inglés", "code": "en" },
+    { "id": 2, "name": "Francés", "code": "fr" },
+    { "id": 3, "name": "Alemán", "code": "de" },
+    { "id": 4, "name": "Español", "code": "es" },
+    { "id": 5, "name": "Italiano", "code": "it" }
+  ],
+  "levels": [
+    { "id":1, "name": "A1"},
+    { "id":2, "name": "A2"},
+    { "id":3, "name": "B1"},
+    { "id":4, "name": "B2"},
+    { "id":5, "name": "C1"},
+    { "id":6, "name": "C2"},
+    { "id":7, "name": "BÁSICO"},
+    { "id":8, "name": "INTERMEDIO"},
+    { "id":9, "name": "AVANZADO"}
+  ]
+}
