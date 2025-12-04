@@ -1,0 +1,131 @@
+<div class="container-fluid py-4">
+    <h3 class="mb-4">Panel de cursos</h3>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr class="filters">
+                    <th colspan="8" class="p-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="languageSelect" class="form-label mb-0 me-2">Idioma:</label>
+                                <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto" 
+                                        (change)="onLanguageChange($event)">
+                                    <option value="All">All</option>
+                                    @for (language of languages; track $index) {
+                                    <option value="{{language.name}}">{{language.name}}</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label for="levelSelect" class="form-label mb-0 me-2">Nivel:</label>
+                                <select id="levelSelect" class="form-select form-select-sm d-inline-block w-auto"
+                                        (change)="onLevelChange($event)">
+                                    <option value="All">All</option>
+                                    @for (level of levels; track $index) {
+                                    <option value="{{level.name}}">{{level.name}}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="8" class="p-2">
+                        <div class="d-flex justify-content-start">
+                            <a class="btn btn-primary btn-sm" routerLink="/nuevo" role="button">
+                                <i class="bi bi-plus-circle"></i> Nuevo curso
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Título</th>
+                    <th>Precio</th>
+                    <th>Idioma</th>
+                    <th>Nivel</th>
+                    <th>Duración</th>
+                    <th class="text-center">Ver</th>
+                    <th class="text-center">Borrar</th>
+                    <th class="text-center">Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (curso of cursos; track curso.id) {
+                <tr>
+                    <td class="fw-semibold">{{curso.title}}</td>
+                    <td><span class="badge bg-success">{{curso.price}}</span></td>
+                    <td>{{curso.language}}</td>
+                    <td><span class="badge bg-info text-dark">{{curso.level}}</span></td>
+                    <td>{{curso.durationHours}} horas</td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-outline-primary" (click)="verCurso(curso.id)">
+                            Ver Curso
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-outline-danger" (click)="borrarCurso(curso.id)">
+                            Borrar Curso
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-outline-warning" (click)="modificarCurso(curso.id)">
+                            Modificar Curso
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                    </td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="8" class="text-center py-4">
+                        <div>
+                            <strong>No se han encontrado cursos</strong>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- <h3>Listado de Tareas</h3>
+<div style="width:75%">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="filters">
+                <th>id</th>
+                <th>nombre</th>
+                <th>estado
+                    <select> 
+                        <option value="Todas">Todas</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Realizada">Realizada</option>
+                    </select>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+		Mostrar en cada fila de la tabla id, nombre, estado y los botones de Finalizar y Eliminar
+
+ @for (tarea of tareas; track tarea.id) {
+<tr>
+    <td>{{tarea.id}}</td>
+    <td>{{tarea.nombre}}</td>
+    <td>{{tarea.estado}}</td>
+    <td>
+        <button routerLink="/finTarea/{{tarea.id}}" [disabled]="tarea.estado === 'Realizada'">Finalizar</button>
+        <button (click)="eliminar(tarea.id)">Eliminar</button>
+    </td>
+</tr>
+}
+</tbody>
+</table>
+
+<h4>Total Pendientes: {{getTotalPendientes()}}</h4>
+<h4>Total Realizadas: {{getTotalRealizadas()}}</h4>
+
+</div> -->
