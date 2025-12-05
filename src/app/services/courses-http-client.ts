@@ -13,19 +13,19 @@ export class CoursesHttpClient {
         return this.Mihttp.get(this.urlCourses);
     }
     getCourseById(id: number) {
-        return this.Mihttp.get(`${this.urlCourses}/${id}`);
+        return this.Mihttp.get(this.urlCourses + '/' + id);
     }
     getCoursesByLanguage(language: string) {
-        return this.Mihttp.get(`${this.urlCourses}?language=${language}`);
+        return this.Mihttp.get(this.urlCourses + '?language=' + language);
     }
     getCoursesByLevel(level: string) {
-        return this.Mihttp.get(`${this.urlCourses}?level=${level}`);
+        return this.Mihttp.get(this.urlCourses + '?level=' + level);
     }   
     getCoursesByLanguageAndLevel(language: string, level: string) {
-        return this.Mihttp.get(`${this.urlCourses}?language=${language}&level=${level}`);
+        return this.Mihttp.get(this.urlCourses + '?language=' + language + '&level=' + level);
     }
     deleteCourse(id: number) {
-        return this.Mihttp.delete(`${this.urlCourses}/${id}`);
+        return this.Mihttp.delete(this.urlCourses + '/' + id);
     }
     getAllLanguages() {
         return this.Mihttp.get(this.urlLanguages);

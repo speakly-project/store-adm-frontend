@@ -1,0 +1,15 @@
+@use "sass:list";
+@use "../01_utilities/index" as utilities;
+
+:root {
+    @for $i from 1 through list.length(utilities.$paddings) {
+        $padding: list.nth(utilities.$paddings, $i);
+        --mlt-sys-padding-#{$i}: #{$padding};
+    }
+}
+
+@for $i from 1 through list.length(utilities.$paddings) {
+    .g--padding-#{$i} {
+        padding: var(--mlt-sys-padding-#{$i}) !important;
+    }
+}

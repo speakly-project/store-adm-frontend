@@ -1,0 +1,15 @@
+@use "sass:list";
+@use "../01_utilities/index" as utilities;
+
+:root {
+    @for $i from 1 through list.length(utilities.$border-widths) {
+        $border-width: list.nth(utilities.$border-widths, $i);
+        --mlt-sys-border-width-#{$i}: #{$border-width};
+    }
+}
+
+@for $i from 1 through list.length(utilities.$border-widths) {
+    .g--border-width-#{$i} {
+        border-width: var(--mlt-sys-border-width-#{$i}) !important;
+    }
+}

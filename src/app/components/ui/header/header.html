@@ -1,4 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<header class="c-header">
+    <nav class="c-header__nav">
+        <div class="c-header__container">
+            <a class="c-header__brand" routerLink="/">
+                <img src="assets/logo.jpg" alt="Logo" width="40" height="40" class="c-header__logo" />
+                Speakly Admin Panel
+            </a>
+            <div class="c-header__links">
+                <ul class="c-header__list">
+                    <li class="c-header__item">
+                        <a class="c-header__link" routerLink="/">
+                            <button c-boton [importancia]="'secundaria'">
+                            Home
+                            </button>
+                        </a>
+                    </li>
+                    <li class="c-header__item">
+                        <a class="c-header__link" routerLink="/cursos">
+                            <button c-boton [importancia]="'primaria'">
+                            Cursos
+                            </button>
+                        </a>
+                    </li>
+                    <li class="c-header__item">
+                        <a class="c-header__link" routerLink="/login">
+                            <button c-boton [importancia]="'primaria'">
+                            Login
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="/">
             <i class="bi bi-book"></i> Speakly Admin Panel
@@ -10,7 +45,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/home">
+                    <a class="nav-link" routerLink="/">
                          Home
                     </a>
                 </li>
@@ -20,11 +55,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/about">
-                        About
+                    <a class="nav-link" routerLink="/login">
+                        Login
                     </a>
                 </li>
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->

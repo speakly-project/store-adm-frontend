@@ -1,0 +1,53 @@
+.c-boton {
+    --c-boton-padding: var(--mlt-sys-padding-1) var(--mlt-sys-padding-2);
+    --c-boton-font-size: var(--mlt-sys-font-size-1);
+    --c-boton-font-weight: var(--mlt-sys-font-weight-1);
+    --c-boton-border-width: var(--mlt-sys-border-width-1);
+    --c-boton-border-radius: var(--mlt-sys-border-radius-1);
+
+
+    color: var(--c-boton-letter-color);
+    border-color: var(--c-boton-border-color);
+    background-color: var(--c-boton-bg-color);
+    padding: var(--c-boton-padding);
+    font-size: var(--c-boton-font-size);
+    font-weight: var(--c-boton-font-weight);
+    border-width: var(--c-boton-border-width);
+    border: solid transparent;
+    border-radius: var(--c-boton-border-radius);
+    display: inline-block;
+    text-align: center;
+    transition: color .15s ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out;
+
+    &:hover {
+        color: var(--c-boton-color-hover);
+        background-color: var(--c-boton-bg-color-hover);
+        border-color: var(--c-boton-border-color-hover);
+    }
+
+    
+}
+
+.c-boton--importance-primaria {
+    --c-boton-color-strong: var(--mlt-sys-primary-color-4);
+    --c-boton-color-weak: var(--mlt-sys-primary-color-9);
+    --c-boton-bg-color: var(--c-boton-color-strong);
+    --c-boton-letter-color: var(--c-boton-color-weak);
+    --c-boton-border-color: var(--c-boton-color-strong);
+    --c-boton-border-color-hover: var(--c-boton-color-strong);
+    --c-boton-color-hover: var(--c-boton-color-weak);
+    --c-boton-bg-color-hover: var(--mlt-sys-primary-color-3);
+}
+
+.c-boton--importance-secundaria {
+    --c-boton-color-strong: var(--mlt-sys-secondary-color-5);
+    --c-boton-color-weak: var(--mlt-sys-secondary-color-9);
+    --c-boton-bg-color: var(--c-boton-color-weak);
+    --c-boton-letter-color: var(--c-boton-color-strong);
+    --c-boton-border-color: var(--c-boton-color-strong);
+    --c-boton-border-color-hover: var(--mlt-sys-secondary-color-6);
+    --c-boton-color-hover: var(--c-boton-color-weak);
+    --c-boton-bg-color-hover: var(--c-boton-color-strong);
+}
