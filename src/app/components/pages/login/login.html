@@ -1,1 +1,7 @@
-<p>login works!</p>
+<form>
+    <label position="floating">Usuario</label>
+    <input type="text" [(ngModel)]="user" name="user">
+    <label position="floating">Contraseña</label>
+    <input type="password" [(ngModel)]="passwd" name="passwd">
+    <button expand="full" (click)="onLogin()">Iniciar sesión</button>
+</form>
