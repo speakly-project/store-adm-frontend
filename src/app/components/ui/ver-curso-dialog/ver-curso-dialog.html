@@ -1,0 +1,25 @@
+<mat-card class="dialog-card">
+¡  <mat-card-header>
+    <mat-card-title>{{ data.title }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <br>
+    <p>id: {{ data.id }}</p>
+    <p>descripción: {{ data.description }}</p>
+    <p>Precio: {{ data.price }}</p>
+    <p>Idioma: {{ data.language }}</p>
+    <p>Nivel: {{ data.level }}</p>
+    <p>Profesor: {{ data.teacher }}</p>
+    <p>Duración: {{ data.durationHours }}</p>
+    <p>Creado el: {{ data.createdAt }}</p>
+    <div class="course-image mt-3">
+      <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLPK9PCyWnpPHFqAyv4i2vGIq2gR5w2A5yuA&s'" 
+           class="img-fluid rounded">
+    </div>
+  </mat-card-content>
+
+  <mat-dialog-actions>
+    <button matButton mat-dialog-close>Cerrar</button>
+  </mat-dialog-actions>
+</mat-card>

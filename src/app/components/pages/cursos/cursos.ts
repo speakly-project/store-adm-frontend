@@ -4,6 +4,9 @@ import { ActivatedRoute, Route, Router, RouterLink } from "@angular/router";
 import { CourseInterface } from '../../../models/CourseInterface';
 import { LanguageInterface } from '../../../models/LanguageInterface';
 import { LevelInterface } from '../../../models/LevelInterface';
+import { MatDialog } from '@angular/material/dialog';
+import { VerCursoDialog } from '../../ui/ver-curso-dialog/ver-curso-dialog';
+
 
 @Component({
   selector: 'cursos',
@@ -12,7 +15,7 @@ import { LevelInterface } from '../../../models/LevelInterface';
   styleUrl: './cursos.scss',
 })
 export class Cursos {
-  constructor(private coursesHttpClient: CoursesHttpClient, private router: Router) { }
+  constructor(private dialog: MatDialog, private coursesHttpClient: CoursesHttpClient, private router: Router) { }
 
   cursos!: CourseInterface[];
   languages!: LanguageInterface[];
@@ -88,5 +91,13 @@ export class Cursos {
         }
       });
     }
+  }
+  verCursoDialog(id: number) {
+    const curso = this.cursos.find(curso => curso.id === id);
+    
+    const dialogRef = this.dialog.open(VerCursoDialog, {
+      data: curso,
+      width: '400px'
+    });
   }
 }
