@@ -43,17 +43,6 @@
   ],
   "courses": [
     {
-      "id": "23",
-      "title": "Alemán Avanzado",
-      "description": "Perfecciona tu alemán para contextos profesionales",
-      "price": 99.99,
-      "language": "german",
-      "level": "C1",
-      "teacher": "profesor",
-      "durationHours": "12",
-      "createdAt": "2024-03-01T14:20:00Z"
-    },
-    {
       "id": "6",
       "title": "Inglés Conversacional",
       "description": "Práctica intensiva de conversación para ganar confianza",

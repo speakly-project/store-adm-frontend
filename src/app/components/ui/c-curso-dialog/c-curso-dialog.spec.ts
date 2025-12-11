@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerCursoDialog } from './ver-curso-dialog';
+import { CCursoDialog } from './c-curso-dialog';
 
-describe('VerCursoDialog', () => {
-  let component: VerCursoDialog;
-  let fixture: ComponentFixture<VerCursoDialog>;
+describe('CCursoDialog', () => {
+  let component: CCursoDialog;
+  let fixture: ComponentFixture<CCursoDialog>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VerCursoDialog]
+      imports: [CCursoDialog]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VerCursoDialog);
+    fixture = TestBed.createComponent(CCursoDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,55 @@
+.curso-card {
+  max-width: 600px;
+  padding: 20px;
+
+  mat-card-header {
+    padding: 24px 24px 16px;
+
+    mat-card-title {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 32px;
+      letter-spacing: 0;
+      margin: 0;
+    }
+  }
+
+  mat-card-content {
+    padding: 16px 24px;
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      margin: 8px 0;
+      color: rgba(0, 0, 0, 0.87);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .course-label {
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .course-image {
+      margin-top: 16px;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .curso-card {
+    max-width: 100%;
+  }
+}

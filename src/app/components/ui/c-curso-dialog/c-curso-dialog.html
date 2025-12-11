@@ -1,0 +1,8 @@
+<c-curso-card [curso]="curso"></c-curso-card>
+  <mat-dialog-actions>
+    @if (data.accion!= 'ver'){
+    <button c-boton [importancia]="importanciaBoton" (click)="seleccionarAccion(data.accion)">{{textoBoton}}</button>
+    }
+    <button c-boton mat-dialog-close>Cancelar</button>
+
+  </mat-dialog-actions>

@@ -5,7 +5,7 @@ import { CourseInterface } from '../../../models/CourseInterface';
 import { LanguageInterface } from '../../../models/LanguageInterface';
 import { LevelInterface } from '../../../models/LevelInterface';
 import { MatDialog } from '@angular/material/dialog';
-import { VerCursoDialog } from '../../ui/ver-curso-dialog/ver-curso-dialog';
+import { CCursoDialog } from '../../ui/c-curso-dialog/c-curso-dialog';
 
 
 @Component({
@@ -71,33 +71,60 @@ export class Cursos {
     this.loadCourses();
   }
   verCurso(id: number) {
-    this.router.navigate(['/curso', id]);
+    this.openCursoDialog(id, 'ver');
   }
 
   modificarCurso(id: number) {
-    this.router.navigate(['/modificar', id]);
+    this.openCursoDialog(id, 'modificar');
   }
 
   borrarCurso(id: number) {
-    if (confirm('¿Estás seguro de que deseas borrar este curso?')) {
-      this.coursesHttpClient.deleteCourse(id).subscribe({
-        next: () => {
-          this.cursos = this.cursos.filter(curso => curso.id !== id);
-          alert('Curso borrado exitosamente');
-        },
-        error: (error: any) => {
-          console.error('Error al borrar el curso:', error);
-          alert('Error al borrar el curso');
-        }
-      });
-    }
+    this.openCursoDialog(id, 'borrar');
   }
-  verCursoDialog(id: number) {
-    const curso = this.cursos.find(curso => curso.id === id);
+
+  openCursoDialog(id: number, accion: 'ver' | 'modificar' | 'borrar') {
+    const curso = this.cursos.find(c => c.id === id);
     
-    const dialogRef = this.dialog.open(VerCursoDialog, {
-      data: curso,
-      width: '400px'
+    if (!curso) return;
+    
+    const dialogRef = this.dialog.open(CCursoDialog, {
+      data: { curso, accion },
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        switch(result) {
+          case 'ver':
+            console.log('Vista del curso cerrada');
+            break;
+          case 'modificar':
+            this.ejecutarModificacion(curso);
+            break;
+          case 'borrar':
+            this.ejecutarBorrado(id);
+            break;
+        }
+      }
     });
   }
+
+  ejecutarModificacion(curso: CourseInterface) {
+    // Lógica para modificar el curso
+    console.log('Modificando curso:', curso);
+    //pet HTTP para actualizar
+  }
+
+  ejecutarBorrado(id: number) {
+    this.coursesHttpClient.deleteCourse(id).subscribe({
+      next: () => {
+        this.cursos = this.cursos.filter(curso => curso.id !== id);
+        console.log('Curso borrado exitosamente');
+      },
+      error: (error: any) => {
+        console.error('Error al borrar el curso:', error);
+      }
+    });
+  }
+
 }

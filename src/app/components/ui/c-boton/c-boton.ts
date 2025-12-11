@@ -9,7 +9,7 @@ import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 
 })
 export class Boton {
-  @Input() importancia: 'primaria' | 'secundaria' = 'primaria';
+  @Input() importancia: 'primaria' | 'secundaria' | 'danger' | 'warning' = 'primaria';
 
   @HostBinding('class')
     get clazz(): Record<string, boolean> {
@@ -17,7 +17,8 @@ export class Boton {
             'c-boton': true,
             'c-boton--importance-primaria': this.importancia === 'primaria',
             'c-boton--importance-secundaria': this.importancia === 'secundaria',
-
+            'c-boton--importance-danger': this.importancia === 'danger',
+            'c-boton--importance-warning': this.importancia === 'warning'
         };
     }
 

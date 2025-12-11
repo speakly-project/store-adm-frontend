@@ -51,3 +51,24 @@
     --c-boton-color-hover: var(--c-boton-color-weak);
     --c-boton-bg-color-hover: var(--c-boton-color-strong);
 }
+.c-boton--importance-danger {
+    --c-boton-color-strong: var(--mlt-sys-danger-color-5);
+    --c-boton-color-weak: var(--mlt-sys-danger-color-9);
+    --c-boton-bg-color: var(--c-boton-color-strong);
+    --c-boton-letter-color: var(--c-boton-color-weak);
+    --c-boton-border-color: var(--c-boton-color-strong);
+    --c-boton-border-color-hover: var(--mlt-sys-danger-color-4);
+    --c-boton-color-hover: var(--c-boton-color-weak);
+    --c-boton-bg-color-hover: var(--mlt-sys-danger-color-4);
+}
+.c-boton--importance-warning {
+    --c-boton-color-strong: var(--mlt-sys-warning-color-4);
+    --c-boton-color-weak: var(--mlt-sys-warning-color-9);
+    --c-boton-bg-color: var(--c-boton-color-strong);
+    --c-boton-letter-color: var(--c-boton-color-weak);
+    --c-boton-border-color: var(--c-boton-color-strong);
+    --c-boton-border-color-hover: var(--mlt-sys-warning-color-3);
+    --c-boton-color-hover: var(--c-boton-color-weak);
+    --c-boton-bg-color-hover: var(--mlt-sys-warning-color-3);
+}
+

@@ -1,0 +1,21 @@
+<div class="curso-card">
+  <div class="curso-card-header">
+    <h2 class="curso-card-title">{{ curso.title }}</h2>
+    <h3 class="curso-card-subtitle">ID: {{ curso.id }}</h3>    
+  </div>
+    <div class="curso-card-content">
+        <div class="course-details">
+        <p><span class="course-label">Descripción:</span> {{ curso.description }}</p>
+        <p><span class="course-label">Precio:</span> ${{ curso.price }}</p>
+        <p><span class="course-label">Idioma:</span> {{ curso.language }}</p>
+        <p><span class="course-label">Nivel:</span> {{ curso.level }}</p>
+        <p><span class="course-label">Profesor:</span> {{ curso.teacher }}</p>
+        <p><span class="course-label">Duración:</span> {{ curso.durationHours }} horas</p>
+        <p><span class="course-label">Creado el:</span> {{ curso.createdAt | date:'short' }}</p>
+        </div>
+    
+        <div class="course-image">
+        <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLPK9PCyWnpPHFqAyv4i2vGIq2gR5w2A5yuA&s'"
+            [alt]="curso.title">
+        </div>
+</div>
