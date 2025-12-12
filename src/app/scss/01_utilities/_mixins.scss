@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+@use './variables' as *;
+
+// mixin design token
+html {
+  @include mat.dialog-overrides((
+    container-shape: 16px,
+    container-color: var(--mlt-sys-alternative-color-1)
+  ));
+}
