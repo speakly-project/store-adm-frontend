@@ -1,8 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { AuthClient } from './auth-client';
-import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs';
-import { LoginUserInterface } from '../models/LoginUserInterface';
+import { Observable, of, catchError, map } from 'rxjs';
 
 
 @Injectable({
@@ -13,13 +11,34 @@ export class AuthService {
   private readonly TOKEN_KEY = 'authToken';
 
   login(email: string, password: string): Observable<string> {
-    let loginRequest = { email, password };
+    return new Observable((observer) => {
+      const loginRequest = { email, password };
 
-    return this.httpClient.login(loginRequest).pipe(
-      tap((token: string) => {
-        localStorage.setItem(this.TOKEN_KEY, token);
-      })
-    );
+      // Primero verificar si es admin
+      this.httpClient.getUserByEmail(email).subscribe({
+        next: (user) => {
+          if (user.role !== 'ADMIN') {
+            observer.error('Acceso denegado: no es administrador');
+            return;
+          }
+
+          // Si es admin, proceder con el login
+          this.httpClient.login(loginRequest).subscribe({
+            next: (token: string) => {
+              localStorage.setItem(this.TOKEN_KEY, token);
+              observer.next(token);
+              observer.complete();
+            },
+            error: (error) => {
+              observer.error(error);
+            }
+          });
+        },
+        error: (error) => {
+          observer.error(error);
+        }
+      });
+    });
   }
 
   getToken(): string | null {
@@ -30,25 +49,17 @@ export class AuthService {
     return !!this.getToken();
   }
 
-  getCurrentUser(): Observable<LoginUserInterface | null> {
-    if (!this.isAuthenticated()) {
-      return of(null);
-    }
-    return this.httpClient.getCurrentUserFromToken();
-  }
-
-  getUserRole(): Observable<string | null> {
-    return this.getCurrentUser().pipe(
-      map(user => user ? user.role : null)
-    );
-  }
-
   isAdmin(): Observable<boolean> {
-    return this.getCurrentUser().pipe(
-      map(user => user ? user.role === 'ADMIN' : false)
+    if (!this.getToken()) {
+      return of(false);
+    }
+
+    return this.httpClient.getCurrentUserFromToken().pipe(
+      map(user => user.role === 'ADMIN'),
+      catchError(() => of(false))
     );
   }
-  
+
   logout(): void {
     this.httpClient.logout().subscribe({
       next: () => {

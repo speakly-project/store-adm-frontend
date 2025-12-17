@@ -5,7 +5,7 @@ export interface CourseInterface {
     price: number;
     language: string;
     level: string;
-    teacher: string;
-    durationHours: number;
+    teacherId: number;
+    duration: number;
     createdAt: string;
 }

@@ -8,7 +8,7 @@
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">
                                 <label for="languageSelect" class="form-label mb-0 me-2">Idioma:</label>
-                                <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto" 
+                                <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto"
                                         (change)="onLanguageChange($event)">
                                     <option value="All">All</option>
                                     @for (language of languages; track $index) {
@@ -27,7 +27,7 @@
                                 </select>
                             </div>
                             <div>
-                                Resultados: <strong>{{cursos.length}}</strong>
+                                Resultados: <strong>{{courses.length}}</strong>
                             </div>
                         </div>
                     </th>
@@ -53,13 +53,13 @@
                 </tr>
             </thead>
             <tbody>
-                @for (curso of cursos; track curso.id) {
+                @for (curso of courses; track curso.id) {
                 <tr>
                     <td class="fw-semibold">{{curso.title}}</td>
                     <td><span c-tag="precio">{{curso.price}}</span></td>
                     <td>{{curso.language}}</td>
                     <td><span c-tag>{{curso.level}}</span></td>
-                    <td>{{curso.durationHours}} horas</td>
+                    <td>{{curso.duration}} horas</td>
                     <td class="text-center">
                         <button c-boton [importancia]="'primaria'" (click)="verCurso(curso.id)">
                             Ver Curso
@@ -102,7 +102,7 @@
                 <th>id</th>
                 <th>nombre</th>
                 <th>estado
-                    <select> 
+                    <select>
                         <option value="Todas">Todas</option>
                         <option value="Pendiente">Pendiente</option>
                         <option value="Realizada">Realizada</option>
@@ -111,7 +111,7 @@
             </tr>
         </thead>
         <tbody>
-            
+
 		Mostrar en cada fila de la tabla id, nombre, estado y los botones de Finalizar y Eliminar
 
  @for (tarea of tareas; track tarea.id) {

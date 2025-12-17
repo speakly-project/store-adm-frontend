@@ -18,7 +18,7 @@
                             </button>
                     </li>
                     <li class="c-header__item">
-                            <button c-boton [tipo]="'underlined'" [importancia]="'primaria'" 
+                            <button c-boton [tipo]="'underlined'" [importancia]="'primaria'"
                                     [routerLink]="!authService.isAuthenticated() ? '/login' : '/logout'">
                                 @if (!authService.isAuthenticated()) {
                                     Login
@@ -37,7 +37,7 @@
         <a class="navbar-brand" routerLink="/">
             <i class="bi bi-book"></i> Speakly Admin Panel
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

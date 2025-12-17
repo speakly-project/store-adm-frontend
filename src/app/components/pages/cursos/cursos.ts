@@ -19,7 +19,8 @@ import { CTag } from '../../ui/c-tag/c-tag';
 export class Cursos {
   constructor(private dialog: MatDialog, private coursesHttpClient: CoursesHttpClient, private router: Router) { }
 
-  cursos!: CourseInterface[];
+  courses!: CourseInterface[];
+  allCourses!: CourseInterface[];
   languages!: LanguageInterface[];
   levels!: LevelInterface[];
 
@@ -27,7 +28,10 @@ export class Cursos {
   selectedLevel: string = 'All';
 
   ngOnInit() {
-    this.loadCourses();
+    this.coursesHttpClient.getAllCourses().subscribe((data: any) => {
+      this.courses = data;
+      this.allCourses = data;
+    });
     this.coursesHttpClient.getAllLanguages().subscribe((data: any) => {
       this.languages = data;
     });
@@ -42,23 +46,11 @@ export class Cursos {
     const language = this.selectedLanguage;
     const level = this.selectedLevel;
 
-    if (language === 'All' && level === 'All') {
-      this.coursesHttpClient.getAllCourses().subscribe((data: any) => {
-        this.cursos = data;
-      });
-    } else if (language !== 'All' && level !== 'All') {
-      this.coursesHttpClient.getCoursesByLanguageAndLevel(language, level).subscribe((data: any) => {
-        this.cursos = data;
-      });
-    } else if (language !== 'All') {
-      this.coursesHttpClient.getCoursesByLanguage(language).subscribe((data: any) => {
-        this.cursos = data;
-      });
-    } else if (level !== 'All') {
-      this.coursesHttpClient.getCoursesByLevel(level).subscribe((data: any) => {
-        this.cursos = data;
-      });
-    }
+    this.courses = this.allCourses.filter(curso => {
+      const matchLanguage = language === 'All' || curso.language === language;
+      const matchLevel = level === 'All' || curso.level === level;
+      return matchLanguage && matchLevel;
+    });
   }
 
   onLanguageChange(event: Event) {
@@ -85,10 +77,10 @@ export class Cursos {
   }
 
   openCursoDialog(id: number, accion: 'ver' | 'modificar' | 'borrar') {
-    const curso = this.cursos.find(c => c.id === id);
-    
+    const curso = this.courses.find(c => c.id === id);
+
     if (!curso) return;
-    
+
     const dialogRef = this.dialog.open(CCursoDialog, {
       data: { curso, accion },
       width: '600px'
@@ -120,7 +112,7 @@ export class Cursos {
   ejecutarBorrado(id: number) {
     this.coursesHttpClient.deleteCourse(id).subscribe({
       next: () => {
-        this.cursos = this.cursos.filter(curso => curso.id !== id);
+        this.courses = this.courses.filter(curso => curso.id !== id);
         console.log('Curso borrado exitosamente');
       },
       error: (error: any) => {
