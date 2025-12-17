@@ -56,9 +56,9 @@
                 @for (curso of cursos; track curso.id) {
                 <tr>
                     <td class="fw-semibold">{{curso.title}}</td>
-                    <td><span class="badge bg-success">{{curso.price}}</span></td>
+                    <td><span c-tag="precio">{{curso.price}}</span></td>
                     <td>{{curso.language}}</td>
-                    <td><span class="badge bg-info text-dark">{{curso.level}}</span></td>
+                    <td><span c-tag>{{curso.level}}</span></td>
                     <td>{{curso.durationHours}} horas</td>
                     <td class="text-center">
                         <button c-boton [importancia]="'primaria'" (click)="verCurso(curso.id)">

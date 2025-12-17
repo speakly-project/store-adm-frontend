@@ -7,11 +7,12 @@ import { LevelInterface } from '../../../models/LevelInterface';
 import { MatDialog } from '@angular/material/dialog';
 import { CCursoDialog } from '../../ui/c-curso-dialog/c-curso-dialog';
 import { Boton } from '../../ui/c-boton/c-boton';
+import { CTag } from '../../ui/c-tag/c-tag';
 
 
 @Component({
   selector: 'cursos',
-  imports: [RouterLink, Boton],
+  imports: [RouterLink, Boton, CTag],
   templateUrl: './cursos.html',
   styleUrl: './cursos.scss',
 })
