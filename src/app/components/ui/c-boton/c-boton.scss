@@ -1,14 +1,17 @@
-.c-boton {
+.c-boton-underlined {
     --c-boton-padding: var(--mlt-sys-padding-1) var(--mlt-sys-padding-2);
     --c-boton-font-size: var(--mlt-sys-font-size-1);
     --c-boton-font-weight: var(--mlt-sys-font-weight-1);
     --c-boton-border-width: var(--mlt-sys-border-width-1);
     --c-boton-border-radius: var(--mlt-sys-border-radius-1);
+    --c-boton-underline-color: currentColor;
 
 
+    position: relative;
+    overflow: hidden;
     color: var(--c-boton-letter-color);
     border-color: var(--c-boton-border-color);
-    background-color: var(--c-boton-bg-color);
+    background-color: transparent; //var(--c-boton-bg-color);
     padding: var(--c-boton-padding);
     font-size: var(--c-boton-font-size);
     font-weight: var(--c-boton-font-weight);
@@ -21,37 +24,34 @@
         background-color .15s ease-in-out,
         border-color .15s ease-in-out;
 
-    &:hover {
-        color: var(--c-boton-color-hover);
-        background-color: var(--c-boton-bg-color-hover);
-        border-color: var(--c-boton-border-color-hover);
-    }
 
-    
 }
 
-.c-boton--importance-primaria {
+.c-boton-underlined--importance-primaria {
     --c-boton-color-strong: var(--mlt-sys-primary-color-4);
     --c-boton-color-weak: var(--mlt-sys-primary-color-9);
     --c-boton-bg-color: var(--c-boton-color-strong);
     --c-boton-letter-color: var(--c-boton-color-weak);
     --c-boton-border-color: var(--c-boton-color-strong);
     --c-boton-border-color-hover: var(--c-boton-color-strong);
-    --c-boton-color-hover: var(--c-boton-color-weak);
+    --c-boton-color-hover: var(--c-boton-color-strong);
     --c-boton-bg-color-hover: var(--mlt-sys-primary-color-3);
+    --c-boton-underline-color: var(--mlt-sys-primary-color-3);
 }
 
-.c-boton--importance-secundaria {
+.c-boton-underlined--importance-secundaria {
     --c-boton-color-strong: var(--mlt-sys-secondary-color-5);
     --c-boton-color-weak: var(--mlt-sys-secondary-color-9);
     --c-boton-bg-color: var(--c-boton-color-weak);
-    --c-boton-letter-color: var(--c-boton-color-strong);
+    --c-boton-letter-color: var(--c-boton-color-weak);
     --c-boton-border-color: var(--c-boton-color-strong);
     --c-boton-border-color-hover: var(--mlt-sys-secondary-color-6);
     --c-boton-color-hover: var(--c-boton-color-weak);
     --c-boton-bg-color-hover: var(--c-boton-color-strong);
+    --c-boton-underline-color: var(--mlt-sys-secondary-color-5);
 }
-.c-boton--importance-danger {
+
+.c-boton-underlined--importance-danger {
     --c-boton-color-strong: var(--mlt-sys-danger-color-5);
     --c-boton-color-weak: var(--mlt-sys-danger-color-9);
     --c-boton-bg-color: var(--c-boton-color-strong);
@@ -60,8 +60,10 @@
     --c-boton-border-color-hover: var(--mlt-sys-danger-color-4);
     --c-boton-color-hover: var(--c-boton-color-weak);
     --c-boton-bg-color-hover: var(--mlt-sys-danger-color-4);
+    --c-boton-underline-color: var(--mlt-sys-danger-color-4);
 }
-.c-boton--importance-warning {
+
+.c-boton-underlined--importance-warning {
     --c-boton-color-strong: var(--mlt-sys-warning-color-4);
     --c-boton-color-weak: var(--mlt-sys-warning-color-9);
     --c-boton-bg-color: var(--c-boton-color-strong);
@@ -69,6 +71,101 @@
     --c-boton-border-color: var(--c-boton-color-strong);
     --c-boton-border-color-hover: var(--mlt-sys-warning-color-3);
     --c-boton-color-hover: var(--c-boton-color-weak);
+    --c-boton-bg-color-hover: var(--mlt-sys-warning-color-3);
+    --c-boton-underline-color: var(--mlt-sys-warning-color-3);
+}
+
+.c-boton-underlined::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--c-boton-underline-color);
+
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+    pointer-events: none;
+    
+    
+    // opacity: 0;
+    // transition: transform 0.3s ease, opacity 0.2s ease;
+}
+// .c-boton:hover::after {
+//     opacity: 1;
+//     transform: translateX(-50%) scaleX(1);
+// }
+.c-boton-underlined:hover::after,
+.c-boton-underlined:focus-visible::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+
+.c-boton {
+    position: relative;
+    padding: var(--mlt-sys-padding-1) var(--mlt-sys-padding-2);
+    font-size: var(--mlt-sys-font-size-1);
+    font-weight: var(--mlt-sys-font-weight-1);
+    border-width: var(--mlt-sys-border-width-2);
+    border-style: solid;
+    border-radius: var(--mlt-sys-border-radius-1);
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    transition: color .15s ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out;
+    color: var(--c-boton-letter-color);
+    border-color: var(--c-boton-border-color);
+    background-color: var(--c-boton-bg-color);
+
+    &:hover {
+        color: var(--c-boton-color-hover);
+        background-color: var(--c-boton-bg-color-hover);
+        border-color: var(--c-boton-border-color-hover);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.c-boton--importance-primaria {
+    --c-boton-bg-color: transparent;
+    --c-boton-letter-color: var(--mlt-sys-primary-color-4);
+    --c-boton-border-color: var(--mlt-sys-primary-color-4);
+    --c-boton-border-color-hover: var(--mlt-sys-primary-color-3);
+    --c-boton-color-hover: white;
+    --c-boton-bg-color-hover: var(--mlt-sys-primary-color-3);
+}
+
+.c-boton--importance-secundaria {
+    --c-boton-bg-color: transparent;
+    --c-boton-letter-color: var(--mlt-sys-secondary-color-5);
+    --c-boton-border-color: var(--mlt-sys-secondary-color-5);
+    --c-boton-border-color-hover: var(--mlt-sys-secondary-color-6);
+    --c-boton-color-hover: white;
+    --c-boton-bg-color-hover: var(--mlt-sys-secondary-color-5);
+}
+
+.c-boton--importance-danger {
+    --c-boton-bg-color: transparent;
+    --c-boton-letter-color: var(--mlt-sys-danger-color-5);
+    --c-boton-border-color: var(--mlt-sys-danger-color-5);
+    --c-boton-border-color-hover: var(--mlt-sys-danger-color-4);
+    --c-boton-color-hover: white;
+    --c-boton-bg-color-hover: var(--mlt-sys-danger-color-4);
+}
+
+.c-boton--importance-warning {
+    --c-boton-bg-color: transparent;
+    --c-boton-letter-color: var(--mlt-sys-warning-color-4);
+    --c-boton-border-color: var(--mlt-sys-warning-color-4);
+    --c-boton-border-color-hover: var(--mlt-sys-warning-color-3);
+    --c-boton-color-hover: white;
     --c-boton-bg-color-hover: var(--mlt-sys-warning-color-3);
 }
 

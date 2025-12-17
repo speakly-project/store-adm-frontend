@@ -6,11 +6,12 @@ import { LanguageInterface } from '../../../models/LanguageInterface';
 import { LevelInterface } from '../../../models/LevelInterface';
 import { MatDialog } from '@angular/material/dialog';
 import { CCursoDialog } from '../../ui/c-curso-dialog/c-curso-dialog';
+import { Boton } from '../../ui/c-boton/c-boton';
 
 
 @Component({
   selector: 'cursos',
-  imports: [RouterLink],
+  imports: [RouterLink, Boton],
   templateUrl: './cursos.html',
   styleUrl: './cursos.scss',
 })

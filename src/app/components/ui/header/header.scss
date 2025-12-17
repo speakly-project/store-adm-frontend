@@ -29,17 +29,17 @@
     }
 
     &__brand {
-        color: var(--c-header-letter-color);
+        color: white;//var(--c-header-letter-color);
         font-size: var(--c-header-font-size);
         font-weight: var(--c-header-font-weight);
         display: flex;
         align-items: center;
         gap: var(--c-header-gap);
         text-decoration: none;
-        transition: opacity 0.2s ease;
+        transition: color 0.2s ease-in-out;
 
         &:hover {
-            opacity: 0.85;
+            color: var(--mlt-sys-alternative-color-5);
         }
     }
 

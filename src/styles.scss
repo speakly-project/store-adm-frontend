@@ -22,7 +22,8 @@ html {
 
   @include mat.dialog-overrides((
     container-shape: 16px,
-    container-color: var(--mlt-sys-alternative-color-1)
+    container-color: var(--mlt-sys-alternative-color-1),
+    actions-alignment: space-between
   ));
 }
 

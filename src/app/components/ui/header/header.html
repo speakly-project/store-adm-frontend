@@ -8,25 +8,19 @@
             <div class="c-header__links">
                 <ul class="c-header__list">
                     <li class="c-header__item">
-                        <a class="c-header__link" routerLink="/">
-                            <button c-boton [importancia]="'secundaria'">
+                            <button c-boton [tipo]="'underlined'" [importancia]="'secundaria'" routerLink="/">
                             Home
                             </button>
-                        </a>
                     </li>
                     <li class="c-header__item">
-                        <a class="c-header__link" routerLink="/cursos">
-                            <button c-boton [importancia]="'primaria'">
+                            <button c-boton [tipo]="'underlined'" [importancia]="'primaria'" routerLink="/cursos">
                             Cursos
                             </button>
-                        </a>
                     </li>
                     <li class="c-header__item">
-                        <a class="c-header__link" routerLink="/login">
-                            <button c-boton [importancia]="'primaria'">
+                            <button c-boton [tipo]="'underlined'" [importancia]="'primaria'" routerLink="/login">
                             Login
                             </button>
-                        </a>
                     </li>
                 </ul>
             </div>

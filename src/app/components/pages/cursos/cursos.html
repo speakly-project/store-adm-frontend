@@ -61,19 +61,19 @@
                     <td><span class="badge bg-info text-dark">{{curso.level}}</span></td>
                     <td>{{curso.durationHours}} horas</td>
                     <td class="text-center">
-                        <button class="btn btn-sm btn-outline-primary" (click)="verCurso(curso.id)">
+                        <button c-boton [importancia]="'primaria'" (click)="verCurso(curso.id)">
                             Ver Curso
                             <i class="bi bi-eye"></i>
                         </button>
                     </td>
                     <td class="text-center">
-                        <button class="btn btn-sm btn-outline-danger" (click)="borrarCurso(curso.id)">
+                        <button c-boton [importancia]="'danger'" (click)="borrarCurso(curso.id)">
                             Borrar Curso
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
                     <td class="text-center">
-                        <button class="btn btn-sm btn-outline-warning" (click)="modificarCurso(curso.id)">
+                        <button c-boton [importancia]="'warning'" (click)="modificarCurso(curso.id)">
                             Modificar Curso
                             <i class="bi bi-pencil"></i>
                         </button>
