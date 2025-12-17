@@ -1,12 +1,12 @@
-import { Inject, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { CoursesHttpClient } from '../services/courses-http-client';
+import { AuthService } from '../services/auth-service';
 
 export const loginGuard: CanActivateFn = (route, state) => {
-  const coursesHttpClient = inject(CoursesHttpClient);
+  const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (coursesHttpClient.isLogged()) {
+  if (authService.isAuthenticated()) {
     return true;
   } else {
     router.navigate(['/login']);

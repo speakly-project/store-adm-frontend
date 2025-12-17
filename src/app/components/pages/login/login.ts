@@ -1,25 +1,43 @@
 import { Component } from '@angular/core';
-import { CoursesHttpClient } from '../../../services/courses-http-client';
+import { AuthService } from '../../../services/auth-service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Boton } from '../../ui/c-boton/c-boton';
 
 @Component({
   selector: 'login',
-  imports: [FormsModule],
+  imports: [FormsModule, Boton],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
-  user:string = '';
-  passwd:string = '';
+  email: string = '';
+  password: string = '';
+  errorMessage: string = '';
+  isLoading: boolean = false;
 
-  constructor(private coursesHttpClient: CoursesHttpClient, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
-    this.coursesHttpClient.setCredentials(this.user, this.passwd);
-    if(this.coursesHttpClient.isLogged()) {
-      this.router.navigate(['/cursos']);
+    if (!this.email || !this.password) {
+      this.errorMessage = 'Por favor, ingrese email y contraseña';
+      return;
     }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    this.authService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        this.isLoading = false;
+        this.router.navigate(['/cursos']);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.errorMessage = 'Credenciales inválidas. Por favor, intente nuevamente.';
+        console.error('Login error:', error);
+      }
+    });
   }
 
 }
