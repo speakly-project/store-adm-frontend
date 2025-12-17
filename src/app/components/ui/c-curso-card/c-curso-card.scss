@@ -1,56 +1,61 @@
-.curso-card {
+.c-curso-card {
   max-width: 600px;
-  padding: 20px;
+  padding: 10px 0px;
   border-radius: 16px 16px 0 0;
   background-color: #ffffff;
-  mat-card-header {
-    padding: 24px 24px 16px;
-
-    mat-card-title {
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 32px;
-      letter-spacing: 0;
-      margin: 0;
-    }
+  border: 10px solid var(--mlt-sys-alternative-color-1);
+  &__header {
+    padding: 18px;
   }
 
-  mat-card-content {
-    padding: 16px 24px;
-
-    p {
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 20px;
-      letter-spacing: 0.25px;
-      margin: 8px 0;
-      color: rgba(0, 0, 0, 0.87);
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-
-    .course-label {
-      font-weight: 500;
-      color: rgba(0, 0, 0, 0.6);
-    }
-
-    .course-image {
-      margin-top: 16px;
-
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-        object-fit: cover;
-      }
-    }
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0;
+    margin: 0;
   }
-}
 
-@media (max-width: 600px) {
-  .curso-card {
-    max-width: 100%;
+  &__id {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 8px 0 0 0;
+  }
+
+  &__content {
+    padding: 10px 18px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__detail {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &__label {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__image-wrapper {
+    margin-top: 16px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
   }
 }

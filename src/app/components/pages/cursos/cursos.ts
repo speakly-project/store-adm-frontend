@@ -90,7 +90,6 @@ export class Cursos {
       if (result) {
         switch(result) {
           case 'ver':
-            console.log('Vista del curso cerrada');
             break;
           case 'modificar':
             this.ejecutarModificacion(curso);

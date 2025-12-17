@@ -4,42 +4,19 @@ import { map } from 'rxjs';
 import { CourseInterface } from '../models/CourseInterface';
 import { LanguageInterface } from '../models/LanguageInterface';
 import { LevelInterface } from '../models/LevelInterface';
+import { UserInterface } from '../models/UserInterface';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CoursesHttpClient {
 
-    private user: string | null = null;
-    private passwd: string | null = null;
-
     constructor(private Mihttp: HttpClient) { }
 
     urlCourses = "http://localhost:8080/api/speakly/courses";
-    //urlLanguages = "http://localhost:3000/languages";
     urlLanguages = "http://localhost:8080/api/speakly/languages";
     urlLevels = "http://localhost:8080/api/speakly/levels";
-
-
-    setCredentials(user: string, passwd: string) {
-        this.user = user;
-        this.passwd = passwd;
-    }
-
-    getUser(): string | null {
-        return this.user;
-    }
-
-    getPasswd(): string | null {
-        return this.passwd;
-    }
-
-    isLogged(): boolean {
-        if (this.user === 'admin' || this.passwd === 'admin') {
-            return true;
-        }
-        return false;
-    }
+    urlUsers = "http://localhost:8080/api/speakly/users";
 
     getAllCourses() {
         return this.Mihttp.get<{ data: CourseInterface[] }>(this.urlCourses+`?pageSize=100`).pipe(
@@ -61,5 +38,8 @@ export class CoursesHttpClient {
         return this.Mihttp.get<{ data: LevelInterface[] }>(this.urlLevels+`?pageSize=100`).pipe(
             map(response => response.data)
         );
+    }
+    getUserById(userId: number) {
+        return this.Mihttp.get<UserInterface>(`${this.urlUsers}/${userId}`);
     }
 }
