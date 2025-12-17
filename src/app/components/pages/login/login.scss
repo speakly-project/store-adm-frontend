@@ -90,6 +90,48 @@
     }
 }
 
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper .login-input {
+    width: 100%;
+    padding-right: 2.75rem;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #6c757d;
+    transition: color 0.15s ease-in-out;
+
+    &:hover {
+        color: var(--mlt-sys-primary-color-5);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--mlt-sys-primary-color-5);
+        outline-offset: 2px;
+        border-radius: 0.25rem;
+    }
+
+    svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: currentColor;
+        pointer-events: none;
+    }
+}
+
 .login-button {
     margin-top: 0.5rem;
     width: 100%;

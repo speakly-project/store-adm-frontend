@@ -15,12 +15,13 @@ export class Login {
   password: string = '';
   errorMessage: string = '';
   isLoading: boolean = false;
+  showPassword: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
     if (!this.email || !this.password) {
-      this.errorMessage = 'Por favor, ingrese email y contraseña';
+      this.errorMessage = 'El correo o la contraseña son incorrectos.';
       return;
     }
 
@@ -38,6 +39,10 @@ export class Login {
         console.error('Login error:', error);
       }
     });
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
 }
