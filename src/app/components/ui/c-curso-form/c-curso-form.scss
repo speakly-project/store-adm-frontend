@@ -1,99 +1,157 @@
-.curso-form-header {
-    padding: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    background-color: #ffffff;
 
-    h2 {
-        font-size: 24px;
-        font-weight: 500;
+:host {
+    --c-curso-form-header-padding: var(--mlt-sys-padding-20);
+    --c-curso-form-header-border-bottom: 1px solid var(--mlt-sys-primary-color-1);
+    --c-curso-form-header-bg: var(--mlt-sys-primary-color-9);
+    --c-curso-form-title-font-size: var(--mlt-sys-font-size-24);
+    --c-curso-form-title-font-weight: var(--mlt-sys-font-weight-500);
+    --c-curso-form-title-margin: var(--mlt-sys-margin-0) var(--mlt-sys-margin-0) var(--mlt-sys-margin-8) var(--mlt-sys-margin-0);
+    --c-curso-form-title-color: rgba(0, 0, 0, 0.87);
+    --c-curso-form-id-font-size: var(--mlt-sys-font-size-16);
+    --c-curso-form-id-font-weight: var(--mlt-sys-font-weight-400);
+    --c-curso-form-id-margin: var(--mlt-sys-margin-0);
+    --c-curso-form-id-color: rgba(0, 0, 0, 0.6);
+    --c-curso-form-actions-padding: var(--mlt-sys-padding-16) var(--mlt-sys-padding-24);
+    --c-curso-form-actions-border-top: 1px solid var(--mlt-sys-primary-color-1);
+    --c-curso-form-actions-bg: var(--mlt-sys-primary-color-1);
+    --c-curso-form-actions-margin: var(--mlt-sys-margin-0);
+}
+
+.c-curso-form {
+    --c-curso-form-padding: var(--mlt-sys-padding-20);
+    --c-curso-form-bg: var(--mlt-sys-primary-color-9);
+    --c-curso-form-label-font-weight: var(--mlt-sys-font-weight-500);
+    --c-curso-form-label-color: rgba(0, 0, 0, 0.6);
+    --c-curso-form-label-font-size: var(--mlt-sys-font-size-14);
+    --c-curso-form-label-margin-bottom: var(--mlt-sys-margin-8);
+    --c-curso-form-input-border: 1px solid var(--mlt-sys-primary-color-2);
+    --c-curso-form-input-border-radius: var(--mlt-sys-border-radius-4);
+    --c-curso-form-input-padding: var(--mlt-sys-padding-10) var(--mlt-sys-padding-12);
+    --c-curso-form-input-font-size: var(--mlt-sys-font-size-14);
+    --c-curso-form-input-width: var(--mlt-sys-width-100p);
+    --c-curso-form-input-focus-border-color: var(--mlt-sys-primary-color-6);
+    --c-curso-form-input-disabled-bg: var(--mlt-sys-primary-color-9);
+    --c-curso-form-input-disabled-color: var(--mlt-sys-primary-color-1);
+    --c-curso-form-row-margin-left: var(--mlt-sys-margin-0);
+    --c-curso-form-row-margin-right: var(--mlt-sys-margin-0);
+    --c-curso-form-row-gap: var(--mlt-sys-gap-24);
+    --c-curso-form-col-min-width: var(--mlt-sys-width-220);
+    --c-curso-form-col-padding-left: var(--mlt-sys-padding-0);
+    --c-curso-form-col-padding-right: var(--mlt-sys-padding-0);
+
+    padding: var(--c-curso-form-padding);
+    background-color: var(--c-curso-form-bg);
+
+    &-header {
+        padding: var(--c-curso-form-header-padding);
+        border-bottom: var(--c-curso-form-header-border-bottom);
+        background-color: var(--c-curso-form-header-bg);
+    }
+
+    &__title {
+        font-size: var(--c-curso-form-title-font-size);
+        font-weight: var(--c-curso-form-title-font-weight);
         line-height: 32px;
         letter-spacing: 0;
-        margin: 0 0 8px 0;
-        color: rgba(0, 0, 0, 0.87);
+        margin: var(--c-curso-form-title-margin);
+        color: var(--c-curso-form-title-color);
     }
 
-    h3 {
-        font-size: 24px;
-        font-weight: 500;
+    &__id {
+        font-size: var(--c-curso-form-id-font-size);
+        font-weight: var(--c-curso-form-id-font-weight);
         line-height: 20px;
         letter-spacing: 0.25px;
-        margin: 0;
-        color: rgba(0, 0, 0, 0.87);
+        margin: var(--c-curso-form-id-margin);
+        color: var(--c-curso-form-id-color);
     }
-}
 
-.curso-form {
-    padding: 20px;
-    background-color: #ffffff;
+    &__label {
+        font-weight: var(--c-curso-form-label-font-weight);
+        color: var(--c-curso-form-label-color);
+        font-size: var(--c-curso-form-label-font-size);
+        margin-bottom: var(--c-curso-form-label-margin-bottom);
+    }
 
-    .form-group {
-        label {
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 14px;
-            margin-bottom: 8px;
+    &__input {
+        border: var(--c-curso-form-input-border);
+        border-radius: var(--c-curso-form-input-border-radius);
+        padding: var(--c-curso-form-input-padding);
+        font-size: var(--c-curso-form-input-font-size);
+        font-family: inherit;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        width: var(--c-curso-form-input-width);
+
+        &:focus {
+            outline: none;
+            border-color: var(--c-curso-form-input-focus-border-color);
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
         }
 
-        input,
-        textarea {
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            padding: 10px 12px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-
-            &:focus {
-                outline: none;
-                border-color: #1976d2;
-                box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
-            }
-
-            &:disabled {
-                background-color: #f5f5f5;
-                color: rgba(0, 0, 0, 0.38);
-                cursor: not-allowed;
-            }
+        &:disabled {
+            background-color: var(--c-curso-form-input-disabled-bg);
+            color: var(--c-curso-form-input-disabled-color);
+            cursor: not-allowed;
         }
     }
 
-    .row {
-        margin-left: -12px;
-        margin-right: -12px;
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: var(--c-curso-form-row-gap);
+        margin-left: var(--c-curso-form-row-margin-left);
+        margin-right: var(--c-curso-form-row-margin-right);
 
-        .col-md-6 {
-            padding-left: 12px;
-            padding-right: 12px;
-        }
+    }
+
+    &__col {
+        flex: 1 1 0;
+        min-width: var(--c-curso-form-col-min-width);
+        padding-left: var(--c-curso-form-col-padding-left);
+        padding-right: var(--c-curso-form-col-padding-right);
+    }
+
+    &__actions {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        flex-wrap: wrap;
+        min-height: 52px;
+        padding: var(--c-curso-form-actions-padding);
+        border-top: var(--c-curso-form-actions-border-top);
+        background-color: var(--c-curso-form-actions-bg);
+        margin: var(--c-curso-form-actions-margin);
+        box-sizing: border-box;
+        position: relative;
+        justify-content: space-between;
     }
 }
 
-.curso-form-actions {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    flex-wrap: wrap;
-    min-height: 52px;
-    padding: 16px 24px;
-    border-top: 1px solid rgba(0, 0, 0, 0);
-    background-color: #011819;
-    margin: 0;
-    box-sizing: border-box;
-    position: relative;
-    justify-content: space-between;
-}
+
 
 @media (max-width: 600px) {
-    .curso-form {
+    .c-curso-form {
         padding: 15px;
+
+        &__row {
+            flex-direction: column;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        &__col {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        &__actions {
+            padding: 12px 15px;
+        }
+
+        &__header {
+            padding: 15px;
+        }
     }
 
-    .curso-form-actions {
-        padding: 12px 15px;
-    }
-
-    .curso-form-header {
-        padding: 15px;
-    }
 }

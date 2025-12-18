@@ -1,36 +1,36 @@
-<div class="curso-form-header">
-  <h2>{{ curso.title }}</h2>
-  <h3>ID: {{ curso.id }}</h3>
+<div class="c-curso-form-header">
+  <h2 class="c-curso-form__title">{{ curso.title }}</h2>
+  <h3 class="c-curso-form__id">ID: {{ curso.id }}</h3>
 </div>
 
-<form [formGroup]="formulario" class="curso-form">
-  <div class="form-group mb-3">
-    <label for="title" class="form-label">Título</label>
-    <input type="text" class="form-control" id="title" formControlName="title">
+<form [formGroup]="formulario" class="c-curso-form">
+  <div class="c-curso-form__group mb-3">
+    <label for="title" class="c-curso-form__label">Título</label>
+    <input type="text" class="c-curso-form__input" id="title" formControlName="title">
   </div>
-  <div class="form-group mb-3">
-    <label for="description" class="form-label">Descripción</label>
-    <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
+  <div class="c-curso-form__group mb-3">
+    <label for="description" class="c-curso-form__label">Descripción</label>
+    <textarea class="c-curso-form__input" id="description" formControlName="description" rows="3"></textarea>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group mb-3">
-        <label for="price" class="form-label">Precio</label>
-        <input type="number" class="form-control" id="price" formControlName="price" step="0.01">
+  <div class="c-curso-form__row">
+    <div class="c-curso-form__col">
+      <div class="c-curso-form__group mb-3">
+        <label for="price" class="c-curso-form__label">Precio</label>
+        <input type="number" class="c-curso-form__input" id="price" formControlName="price" step="0.01">
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-group mb-3">
-        <label for="durationHours" class="form-label">Duración (horas)</label>
-        <input type="number" class="form-control" id="durationHours" formControlName="durationHours">
+    <div class="c-curso-form__col">
+      <div class="c-curso-form__group mb-3">
+        <label for="durationHours" class="c-curso-form__label">Duración (horas)</label>
+        <input type="number" class="c-curso-form__input" id="durationHours" formControlName="durationHours">
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group mb-3">
-        <label for="language" class="form-label">Idioma</label>
-        <select class="form-control" id="language" formControlName="language">
+  <div class="c-curso-form__row">
+    <div class="c-curso-form__col">
+      <div class="c-curso-form__group mb-3">
+        <label for="language" class="c-curso-form__label">Idioma</label>
+        <select class="c-curso-form__input" id="language" formControlName="language">
           <option value={{this.curso.language}}>{{this.curso.language}}</option>
           @for (lang of allLanguages; track lang.id) {
             <option [value]="lang.name">{{ lang.name }}</option>
@@ -38,10 +38,10 @@
         </select>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-group mb-3">
-        <label for="level" class="form-label">Nivel</label>
-        <select class="form-control" id="level" formControlName="level">
+    <div class="c-curso-form__col">
+      <div class="c-curso-form__group mb-3">
+        <label for="level" class="c-curso-form__label">Nivel</label>
+        <select class="c-curso-form__input" id="level" formControlName="level">
           <option value={{this.curso.level}}>{{this.curso.level}}</option>
           @for (lev of allLevels; track lev.id) {
             <option [value]="lev.name">{{ lev.name }}</option>
@@ -50,13 +50,13 @@
       </div>
     </div>
   </div>
-  <div class="form-group mb-3">
-    <label for="teacher" class="form-label">Profesor</label>
-    <input type="text" class="form-control" id="teacher" formControlName="teacher">
+  <div class="c-curso-form__group mb-3">
+    <label for="teacher" class="c-curso-form__label">Profesor</label>
+    <input type="text" class="c-curso-form__input" id="teacher" formControlName="teacher">
   </div>
 </form>
 
-<div class="curso-form-actions">
+<div class="c-curso-form__actions">
   <button c-boton [importancia]="'warning'" (click)="onGuardar()" [disabled]="!formulario.valid">Guardar Cambios</button>
   <button c-boton (click)="onCancelar()">Cancelar</button>
 </div>

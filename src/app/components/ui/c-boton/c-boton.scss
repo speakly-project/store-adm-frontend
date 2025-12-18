@@ -1,9 +1,9 @@
 .c-boton-underlined {
-    --c-boton-padding: var(--mlt-sys-padding-1) var(--mlt-sys-padding-2);
-    --c-boton-font-size: var(--mlt-sys-font-size-1);
-    --c-boton-font-weight: var(--mlt-sys-font-weight-1);
+    --c-boton-padding: var(--mlt-sys-padding-6) var(--mlt-sys-padding-12);
+    --c-boton-font-size: var(--mlt-sys-font-size-16);
+    --c-boton-font-weight: var(--mlt-sys-font-weight-400);
     --c-boton-border-width: var(--mlt-sys-border-width-1);
-    --c-boton-border-radius: var(--mlt-sys-border-radius-1);
+    --c-boton-border-radius: var(--mlt-sys-border-radius-6);
     --c-boton-underline-color: currentColor;
 
 
@@ -11,7 +11,7 @@
     overflow: hidden;
     color: var(--c-boton-letter-color);
     border-color: var(--c-boton-border-color);
-    background-color: transparent; //var(--c-boton-bg-color);
+    background-color: transparent;
     padding: var(--c-boton-padding);
     font-size: var(--c-boton-font-size);
     font-weight: var(--c-boton-font-weight);
@@ -105,12 +105,12 @@
 
 .c-boton {
     position: relative;
-    padding: var(--mlt-sys-padding-1) var(--mlt-sys-padding-2);
-    font-size: var(--mlt-sys-font-size-1);
-    font-weight: var(--mlt-sys-font-weight-1);
+    padding: var(--mlt-sys-padding-6) var(--mlt-sys-padding-12);
+    font-size: var(--mlt-sys-font-size-16);
+    font-weight: var(--mlt-sys-font-weight-400);
     border-width: var(--mlt-sys-border-width-2);
     border-style: solid;
-    border-radius: var(--mlt-sys-border-radius-1);
+    border-radius: var(--mlt-sys-border-radius-6);
     display: inline-block;
     text-align: center;
     cursor: pointer;

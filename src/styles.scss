@@ -7,7 +7,7 @@
 @use './app/scss/main.scss' as *;
 @use '@angular/material' as mat;
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Barlow', Roboto, "Helvetica Neue", sans-serif; }
 
 
 html {
@@ -16,7 +16,7 @@ html {
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: Barlow,
     density: 0,
   ));
 
