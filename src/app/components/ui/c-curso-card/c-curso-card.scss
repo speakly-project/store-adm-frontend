@@ -1,16 +1,19 @@
 .c-curso-card {
   --c-curso-card-bg: var(--mlt-sys-primary-color-9);
-  --c-curso-card-border: 10px solid var(--mlt-sys-alternative-color-1);
   --c-curso-card-max-width: var(--mlt-sys-width-600);
   --c-curso-card-padding: var(--mlt-sys-padding-10) var(--mlt-sys-padding-0);
   --c-curso-card-border-radius: var(--mlt-sys-border-radius-16) var(--mlt-sys-border-radius-16) var(--mlt-sys-border-radius-0) var(--mlt-sys-border-radius-0);
-  --c-curso-card-header-padding: var(--mlt-sys-padding-18);
+  --c-curso-card-header-padding: var(--mlt-sys-padding-20);
+  --c-curso-card-header-border-bottom: 1px solid var(--mlt-sys-primary-color-1);
+  --c-curso-card-header-bg: var(--mlt-sys-primary-color-9);
   --c-curso-card-title-font-size: var(--mlt-sys-font-size-24);
   --c-curso-card-title-font-weight: var(--mlt-sys-font-weight-500);
-  --c-curso-card-title-margin: var(--mlt-sys-margin-0);
-  --c-curso-card-id-font-size: var(--mlt-sys-font-size-14);
+  --c-curso-card-title-margin: var(--mlt-sys-margin-0) var(--mlt-sys-margin-0) var(--mlt-sys-margin-8) var(--mlt-sys-margin-0);
+  --c-curso-card-title-color: rgba(0, 0, 0, 0.87);
+  --c-curso-card-id-font-size: var(--mlt-sys-font-size-16);
   --c-curso-card-id-font-weight: var(--mlt-sys-font-weight-400);
-  --c-curso-card-id-margin: var(--mlt-sys-margin-8) var(--mlt-sys-margin-0) var(--mlt-sys-margin-0) var(--mlt-sys-margin-0);
+  --c-curso-card-id-margin: var(--mlt-sys-margin-0);
+  --c-curso-card-id-color: rgba(0, 0, 0, 0.6);
   --c-curso-card-content-padding: var(--mlt-sys-padding-10) var(--mlt-sys-padding-18);
   --c-curso-card-details-gap: var(--mlt-sys-gap-8);
   --c-curso-card-detail-font-size: var(--mlt-sys-font-size-14);
@@ -30,6 +33,8 @@
 
   &__header {
     padding: var(--c-curso-card-header-padding);
+    border-bottom: var(--c-curso-card-header-border-bottom);
+    background-color: var(--c-curso-card-header-bg);
   }
 
   &__title {
@@ -38,13 +43,14 @@
     line-height: 32px;
     letter-spacing: 0;
     margin: var(--c-curso-card-title-margin);
+    color: var(--c-curso-card-title-color);
   }
 
   &__id {
     font-size: var(--c-curso-card-id-font-size);
     font-weight: var(--c-curso-card-id-font-weight);
     line-height: 20px;
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--c-curso-card-id-color);
     margin: var(--c-curso-card-id-margin);
   }
 

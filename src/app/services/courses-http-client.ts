@@ -38,6 +38,9 @@ export class CoursesHttpClient {
     updateCourse(id: number, course: any) {
         return this.Mihttp.put(this.urlCourses + '/' + id, course);
     }
+    createCourse(course: any) {
+        return this.Mihttp.post(this.urlCourses, course);
+    }
     getAllLanguages() {
         return this.Mihttp.get<{ data: LanguageInterface[] }>(this.urlLanguages+`?pageSize=100`).pipe(
             map(response => response.data)
@@ -50,5 +53,8 @@ export class CoursesHttpClient {
     }
     getUserById(userId: number) {
         return this.Mihttp.get<UserInterface>(`${this.urlUsers}/${userId}`);
+    }
+    getUserByUsername(username: string) {
+        return this.Mihttp.get<UserInterface>(`${this.urlUsers}/username?username=${username}`);
     }
 }

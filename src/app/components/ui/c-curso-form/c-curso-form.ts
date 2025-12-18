@@ -29,7 +29,7 @@ export class CCursoForm {
   allLevels: LevelInterface[] = [];
   constructor(private formBuilder: FormBuilder, private coursesHttpClient: CoursesHttpClient) {
   }
-  
+
   ngOnInit() {
     this.crearFormulario();
     this.teacherName = this.curso.teacher?.username || '';
@@ -43,32 +43,21 @@ export class CCursoForm {
       this.allLevels = data;
     });
   }
-  
+
   crearFormulario(): void {
     this.formulario = this.formBuilder.group({
-      title: [this.curso.title, [Validators.required, Validators.minLength(3)]],
-      description: [this.curso.description, [Validators.required, Validators.minLength(10)]],
-      price: [this.curso.price, [Validators.required, Validators.min(0)]],
-      durationHours: [this.curso.duration, [Validators.required, Validators.min(1)]],
-      language: [this.curso.language, Validators.required],
-      level: [this.curso.level, Validators.required],
+      title: [this.curso.title || '', [Validators.required, Validators.minLength(3)]],
+      description: [this.curso.description || '', [Validators.required, Validators.minLength(10)]],
+      price: [this.curso.price || 0, [Validators.required, Validators.min(0)]],
+      durationHours: [this.curso.duration || 0, [Validators.required, Validators.min(1)]],
+      language: [this.curso.language || '', Validators.required],
+      level: [this.curso.level || '', Validators.required],
       teacher: ['', Validators.required]
     });
   }
 
   onGuardar(): void {
     if (this.formulario.valid) {
-      const cursoParaBackend = {
-        id: this.curso.id,
-        title: this.formulario.value.title,
-        description: this.formulario.value.description,
-        price: this.formulario.value.price,
-        language: this.formulario.value.language,
-        level: this.formulario.value.level,
-        teacherId: this.curso.teacherId || this.curso.teacher?.id,
-        duration: this.formulario.value.durationHours
-      };
-            
       const cursoActualizado: CourseInterface = {
         ...this.curso,
         title: this.formulario.value.title,
@@ -76,18 +65,11 @@ export class CCursoForm {
         price: this.formulario.value.price,
         duration: this.formulario.value.durationHours,
         language: this.formulario.value.language,
-        level: this.formulario.value.level
+        level: this.formulario.value.level,
+        teacher: { ...this.curso.teacher, username: this.formulario.value.teacher }
       };
-      
-      this.coursesHttpClient.updateCourse(this.curso.id, cursoParaBackend).subscribe({
-        next: (response) => {
-          Object.assign(this.curso, cursoActualizado);
-          this.guardar.emit(cursoActualizado);
-        },
-        error: (error) => {
-          console.error('Error al actualizar el curso:', error);
-        }
-      });
+
+      this.guardar.emit(cursoActualizado);
     }
   }
 

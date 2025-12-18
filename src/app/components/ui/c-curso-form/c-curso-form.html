@@ -1,6 +1,8 @@
 <div class="c-curso-form-header">
-  <h2 class="c-curso-form__title">{{ curso.title }}</h2>
+  <h2 class="c-curso-form__title">{{ modoEdicion ? curso.title : 'Nuevo Curso' }}</h2>
+  @if (modoEdicion) {
   <h3 class="c-curso-form__id">ID: {{ curso.id }}</h3>
+  }
 </div>
 
 <form [formGroup]="formulario" class="c-curso-form">
@@ -51,12 +53,14 @@
     </div>
   </div>
   <div class="c-curso-form__group mb-3">
-    <label for="teacher" class="c-curso-form__label">Profesor</label>
-    <input type="text" class="c-curso-form__input" id="teacher" formControlName="teacher">
+    <label for="teacher" class="c-curso-form__label">Nombre del Profesor</label>
+    <input type="text" class="c-curso-form__input" id="teacher" formControlName="teacher" placeholder="Introduce el nombre de usuario del profesor">
   </div>
 </form>
 
 <div class="c-curso-form__actions">
-  <button c-boton [importancia]="'warning'" (click)="onGuardar()" [disabled]="!formulario.valid">Guardar Cambios</button>
+  <button c-boton [importancia]="'warning'" (click)="onGuardar()" [disabled]="!formulario.valid">
+    {{ modoEdicion ? 'Guardar Cambios' : 'Crear Curso' }}
+  </button>
   <button c-boton (click)="onCancelar()">Cancelar</button>
 </div>

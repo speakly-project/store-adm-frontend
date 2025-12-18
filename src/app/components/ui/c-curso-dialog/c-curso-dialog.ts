@@ -30,16 +30,13 @@ export class CCursoDialog {
 
   constructor(
     public dialogRef: MatDialogRef<CCursoDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { curso: CourseInterface, accion: 'ver' | 'modificar' | 'borrar' }
+    @Inject(MAT_DIALOG_DATA) public data: { curso: CourseInterface, accion: 'modificar' | 'borrar' | 'nuevo' }
   ){
     this.configurarDialog();
   }
 
   configurarDialog(): void {
     switch(this.data.accion) {
-      case 'ver':
-        this.importanciaBoton = 'primaria';
-        break;
       case 'modificar':
         this.importanciaBoton = 'warning';
         this.textoBoton = 'Guardar Cambios';
@@ -47,6 +44,10 @@ export class CCursoDialog {
       case 'borrar':
         this.importanciaBoton = 'danger';
         this.textoBoton = 'Confirmar Borrado';
+        break;
+      case 'nuevo':
+        this.importanciaBoton = 'primaria';
+        this.textoBoton = 'Crear Curso';
         break;
     }
   }
@@ -66,6 +67,7 @@ export class CCursoDialog {
   }
 
   onGuardarCurso(cursoActualizado: CourseInterface): void {
-    this.dialogRef.close({ accion: 'modificar', curso: cursoActualizado });
+    const accion = this.data.accion === 'nuevo' ? 'nuevo' : 'modificar';
+    this.dialogRef.close({ accion, curso: cursoActualizado });
   }
 }

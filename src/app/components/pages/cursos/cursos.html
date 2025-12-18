@@ -27,10 +27,10 @@
         </div>
     </div>
 
-    <a c-table-actions class="cursos__new-link" routerLink="/nuevo" role="button">
+    <button c-table-actions c-boton [importancia]="'primaria'" (click)="nuevoCurso()">
         <i class="bi bi-plus-circle"></i>
         Nuevo curso
-    </a>
+    </button>
 
     <tr c-table-header>
         <th style="text-align:center;" class="cursos__type-header">ID</th>

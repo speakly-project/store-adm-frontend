@@ -30,6 +30,7 @@
   --c-table-block-color: var(--mlt-sys-primary-color-9);
 
   --c-table-empty-color: var(--mlt-sys-primary-color-9);
+  --c-table-empty-bg: var(--mlt-sys-secondary-color-5);
   --c-table-table-width: var(--mlt-sys-width-100p);
   --c-table-thead-font-weight: var(--mlt-sys-font-weight-600);
   --c-table-actions-wrap-gap: var(--mlt-sys-gap-12);
@@ -114,6 +115,7 @@
     padding-bottom: var(--c-table-empty-cell-padding-bottom);
     text-align: center;
     color: var(--c-table-empty-color);
+    background: var(--c-table-empty-bg) !important;
   }
 }
 

@@ -1,13 +1,9 @@
-@if (data.accion !== 'modificar') {
+@if (data.accion === 'borrar') {
   <c-curso-card [curso]="curso"></c-curso-card>
   <mat-dialog-actions>
-    @if (data.accion!= 'ver'){
     <button c-boton [importancia]="importanciaBoton" (click)="seleccionarAccion(data.accion)">{{textoBoton}}</button>
-    } @else {
-    <button style="visibility: hidden;"></button>
-    }
     <button c-boton mat-dialog-close>Cancelar</button>
   </mat-dialog-actions>
 } @else {
-  <c-curso-form [curso]="curso" (guardar)="onGuardarCurso($event)" (cancelar)="dialogRef.close()"></c-curso-form>
+  <c-curso-form [curso]="curso" [modoEdicion]="data.accion === 'modificar'" (guardar)="onGuardarCurso($event)" (cancelar)="dialogRef.close()"></c-curso-form>
 }
