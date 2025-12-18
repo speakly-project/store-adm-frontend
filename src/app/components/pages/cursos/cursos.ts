@@ -8,39 +8,41 @@ import { MatDialog } from '@angular/material/dialog';
 import { CCursoDialog } from '../../ui/c-curso-dialog/c-curso-dialog';
 import { Boton } from '../../ui/c-boton/c-boton';
 import { CTag } from '../../ui/c-tag/c-tag';
+import { CTable } from '../../ui/c-table/c-table';
 import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'cursos',
-  imports: [RouterLink, Boton, CTag, DatePipe],
+  standalone: true,
+  imports: [RouterLink, Boton, CTag, CTable, DatePipe],
   templateUrl: './cursos.html',
   styleUrl: './cursos.scss',
 })
 export class Cursos {
   constructor(private dialog: MatDialog, private coursesHttpClient: CoursesHttpClient, private router: Router) { }
 
-  courses!: CourseInterface[];
-  allCourses!: CourseInterface[];
-  languages!: LanguageInterface[];
-  levels!: LevelInterface[];
+  courses: CourseInterface[] = [];
+  allCourses: CourseInterface[] = [];
+  languages: LanguageInterface[] = [];
+  levels: LevelInterface[] = [];
 
   selectedLanguage: string = 'All';
   selectedLevel: string = 'All';
 
   ngOnInit() {
     this.coursesHttpClient.getAllCoursesWithTeachers().subscribe((data: any) => {
-      this.courses = data;
-      this.allCourses = data;
+      this.courses = data ?? [];
+      this.allCourses = data ?? [];
     });
+
     this.coursesHttpClient.getAllLanguages().subscribe((data: any) => {
-      this.languages = data;
+      this.languages = data ?? [];
     });
+
     this.coursesHttpClient.getAllLevels().subscribe((data: any) => {
-      this.levels = data;
+      this.levels = data ?? [];
     });
-  }
-  ngOnDestroy() {
   }
 
   loadCourses() {

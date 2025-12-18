@@ -1,86 +1,76 @@
-<div class="container-fluid py-4">
-    <h3 class="mb-4">Panel de cursos</h3>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered">
-            <thead class="table-dark">
-                <tr class="filters">
-                    <th colspan="9" class="p-3">
-                        <div class="row g-3 align-items-center">
-                            <div class="col-auto">
-                                <label for="languageSelect" class="form-label mb-0 me-2">Idioma:</label>
-                                <select id="languageSelect" class="form-select form-select-sm d-inline-block w-auto"
-                                        (change)="onLanguageChange($event)">
-                                    <option value="All">All</option>
-                                    @for (language of languages; track $index) {
-                                    <option value="{{language.name}}">{{language.name}}</option>
-                                    }
-                                </select>
-                            </div>
-                            <div class="col-auto">
-                                <label for="levelSelect" class="form-label mb-0 me-2">Nivel:</label>
-                                <select id="levelSelect" class="form-select form-select-sm d-inline-block w-auto"
-                                        (change)="onLevelChange($event)">
-                                    <option value="All">All</option>
-                                    @for (level of levels; track $index) {
-                                    <option value="{{level.name}}">{{level.name}}</option>
-                                    }
-                                </select>
-                            </div>
-                            <div>
-                                Resultados: <strong>{{courses.length}}</strong>
-                            </div>
-                        </div>
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="9" class="p-2">
-                        <div class="d-flex justify-content-start">
-                            <a class="btn btn-primary btn-sm" routerLink="/nuevo" role="button">
-                                <i class="bi bi-plus-circle"></i> Nuevo curso
-                            </a>
-                        </div>
-                    </th>
-                </tr>
-                <tr>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>Precio</th>
-                    <th>Idioma</th>
-                    <th>Nivel</th>
-                    <th>Duración</th>
-                    <th>Profesor</th>
-                    <th>Fecha Creación</th>
-                    <th class="text-center">Borrar</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (curso of courses; track curso.id) {
-                <tr>
-                    <td>{{curso.id}}</td>
-                    <td class="fw-semibold"><span (click)="modificarCurso(curso.id)" class="text-decoration-none" style="cursor: pointer;">{{curso.title}}</span></td>
-                    <td><span c-tag="precio">{{curso.price}}</span></td>
-                    <td>{{curso.language}}</td>
-                    <td><span c-tag>{{curso.level}}</span></td>
-                    <td>{{curso.duration}} horas</td>
-                    <td>{{curso.teacher.username}}</td>
-                    <td>{{curso.createdAt | date:'dd/MM/yyyy'}}</td>
-                    <td class="text-center">
-                        <button c-boton [importancia]="'danger'" (click)="borrarCurso(curso.id)">
-                            Borrar Curso
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                } @empty {
-                <tr>
-                    <td colspan="9" class="text-center py-4">
-                        <div>
-                            <strong>No se han encontrado cursos</strong>
-                        </div>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+<c-table title="Panel de cursos" [isEmpty]="courses.length === 0">
+    <div c-table-filters class="cursos__toolbar">
+        <div class="cursos__filters">
+            <div class="cursos__filter">
+                <label for="languageSelect" class="cursos__label">Idioma:</label>
+                <select id="languageSelect" class="cursos__select" (change)="onLanguageChange($event)">
+                    <option value="All">All</option>
+                    @for (language of languages; track $index) {
+                    <option [value]="language.name">{{ language.name }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="cursos__filter">
+                <label for="levelSelect" class="cursos__label">Nivel:</label>
+                <select id="levelSelect" class="cursos__select" (change)="onLevelChange($event)">
+                    <option value="All">All</option>
+                    @for (level of levels; track $index) {
+                    <option [value]="level.name">{{ level.name }}</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="cursos__results">
+            Resultados: <strong>{{ courses.length }}</strong>
+        </div>
     </div>
-</div>
+
+    <a c-table-actions class="cursos__new-link" routerLink="/nuevo" role="button">
+        <i class="bi bi-plus-circle"></i>
+        Nuevo curso
+    </a>
+
+    <tr c-table-header>
+        <th style="text-align:center;" class="cursos__type-header">ID</th>
+        <th class="cursos__type-header">Título</th>
+        <th class="cursos__type-header">Precio</th>
+        <th class="cursos__type-header">Idioma</th>
+        <th class="cursos__type-header">Nivel</th>
+        <th class="cursos__type-header">Duración</th>
+        <th class="cursos__type-header">Profesor</th>
+        <th class="cursos__type-header">Fecha Creación</th>
+        <th class="cursos__type-header cursos__type-header--center">Borrar</th>
+    </tr>
+
+    <ng-container c-table-body>
+        @for (curso of courses; track curso.id) {
+        <tr>
+            <td style="text-align:center;" class="g--padding-6">{{ curso.id }}</td>
+            <td class="cursos__semibold g--padding-6">
+                <span (click)="modificarCurso(curso.id)" class="cursos__clickable">
+                    {{ curso.title }}
+                </span>
+            </td>
+            <td class="cursos__type-cell"><span c-tag="precio">{{ curso.price }}</span></td>
+            <td class="cursos__type-cell">{{ curso.language }}</td>
+            <td class="cursos__type-cell"><span c-tag>{{ curso.level }}</span></td>
+            <td class="cursos__type-cell">{{ curso.duration }} horas</td>
+            <td class="cursos__type-cell">{{ curso.teacher.username }}</td>
+            <td class="cursos__type-cell">{{ curso.createdAt | date:'dd/MM/yyyy' }}</td>
+            <td class="cursos__type-cell cursos__type-header--center">
+                <button c-boton importancia="danger" (click)="borrarCurso(curso.id)">
+                    Borrar Curso
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        </tr>
+        }
+    </ng-container>
+
+    <div c-table-empty>
+        <strong>No se han encontrado cursos</strong>
+    </div>
+
+</c-table>

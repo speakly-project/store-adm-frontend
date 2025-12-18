@@ -7,7 +7,7 @@ import { LevelInterface } from '../models/LevelInterface';
 import { UserInterface } from '../models/UserInterface';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class CoursesHttpClient {
 
