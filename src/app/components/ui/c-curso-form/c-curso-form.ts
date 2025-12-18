@@ -32,12 +32,10 @@ export class CCursoForm {
   
   ngOnInit() {
     this.crearFormulario();
-    this.coursesHttpClient.getUserById(this.curso.teacherId).subscribe((user) => {
-      this.teacherName = user.username;
-      this.formulario.patchValue({
-        teacher: this.teacherName
-      }, { emitEvent: false });
-    });
+    this.teacherName = this.curso.teacher?.username || '';
+    this.formulario.patchValue({
+      teacher: this.teacherName
+    }, { emitEvent: false });
     this.coursesHttpClient.getAllLanguages().subscribe((data: LanguageInterface[]) => {
       this.allLanguages = data;
     });
@@ -60,6 +58,17 @@ export class CCursoForm {
 
   onGuardar(): void {
     if (this.formulario.valid) {
+      const cursoParaBackend = {
+        id: this.curso.id,
+        title: this.formulario.value.title,
+        description: this.formulario.value.description,
+        price: this.formulario.value.price,
+        language: this.formulario.value.language,
+        level: this.formulario.value.level,
+        teacherId: this.curso.teacherId || this.curso.teacher?.id,
+        duration: this.formulario.value.durationHours
+      };
+            
       const cursoActualizado: CourseInterface = {
         ...this.curso,
         title: this.formulario.value.title,
@@ -70,7 +79,7 @@ export class CCursoForm {
         level: this.formulario.value.level
       };
       
-      this.coursesHttpClient.updateCourse(this.curso.id, cursoActualizado).subscribe({
+      this.coursesHttpClient.updateCourse(this.curso.id, cursoParaBackend).subscribe({
         next: (response) => {
           Object.assign(this.curso, cursoActualizado);
           this.guardar.emit(cursoActualizado);

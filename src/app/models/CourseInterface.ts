@@ -1,3 +1,5 @@
+import { TeacherInterface } from './TeacherInterface';
+
 export interface CourseInterface {
     id: number;
     title: string;
@@ -6,6 +8,7 @@ export interface CourseInterface {
     language: string;
     level: string;
     teacherId: number;
+    teacher: TeacherInterface;
     duration: number;
     createdAt: string;
 }

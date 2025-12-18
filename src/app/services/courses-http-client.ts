@@ -14,12 +14,18 @@ export class CoursesHttpClient {
     constructor(private Mihttp: HttpClient) { }
 
     urlCourses = "http://localhost:8080/api/speakly/courses";
+    urlCoursesWithTeachers = "http://localhost:8080/api/speakly/courses/with-teachers";
     urlLanguages = "http://localhost:8080/api/speakly/languages";
     urlLevels = "http://localhost:8080/api/speakly/levels";
     urlUsers = "http://localhost:8080/api/speakly/users";
 
     getAllCourses() {
         return this.Mihttp.get<{ data: CourseInterface[] }>(this.urlCourses+`?pageSize=100`).pipe(
+            map(response => response.data)
+        );
+    }
+    getAllCoursesWithTeachers() {
+        return this.Mihttp.get<{ data: CourseInterface[] }>(this.urlCoursesWithTeachers+`?pageSize=100`).pipe(
             map(response => response.data)
         );
     }

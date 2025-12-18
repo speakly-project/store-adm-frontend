@@ -8,11 +8,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { CCursoDialog } from '../../ui/c-curso-dialog/c-curso-dialog';
 import { Boton } from '../../ui/c-boton/c-boton';
 import { CTag } from '../../ui/c-tag/c-tag';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'cursos',
-  imports: [RouterLink, Boton, CTag],
+  imports: [RouterLink, Boton, CTag, DatePipe],
   templateUrl: './cursos.html',
   styleUrl: './cursos.scss',
 })
@@ -28,7 +29,7 @@ export class Cursos {
   selectedLevel: string = 'All';
 
   ngOnInit() {
-    this.coursesHttpClient.getAllCourses().subscribe((data: any) => {
+    this.coursesHttpClient.getAllCoursesWithTeachers().subscribe((data: any) => {
       this.courses = data;
       this.allCourses = data;
     });
@@ -103,7 +104,10 @@ export class Cursos {
   }
 
   ejecutarModificacion(cursoActualizado: CourseInterface) {
-    this.coursesHttpClient.updateCourse(cursoActualizado.id, cursoActualizado).subscribe({
+    // Excluir createdAt y teacher del objeto para el backend
+    const { createdAt, teacher, ...cursoParaBackend } = cursoActualizado;
+    
+    this.coursesHttpClient.updateCourse(cursoActualizado.id, { ...cursoParaBackend, teacherId: cursoActualizado.teacherId }).subscribe({
       next: () => {
         const index = this.courses.findIndex(c => c.id === cursoActualizado.id);
         if (index !== -1) {
