@@ -29,6 +29,9 @@ export class CoursesHttpClient {
     deleteCourse(id: number) {
         return this.Mihttp.delete(this.urlCourses + '/' + id);
     }
+    updateCourse(id: number, course: any) {
+        return this.Mihttp.put(this.urlCourses + '/' + id, course);
+    }
     getAllLanguages() {
         return this.Mihttp.get<{ data: LanguageInterface[] }>(this.urlLanguages+`?pageSize=100`).pipe(
             map(response => response.data)

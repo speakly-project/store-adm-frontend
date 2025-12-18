@@ -1,4 +1,5 @@
-<c-curso-card [curso]="curso"></c-curso-card>
+@if (data.accion !== 'modificar') {
+  <c-curso-card [curso]="curso"></c-curso-card>
   <mat-dialog-actions>
     @if (data.accion!= 'ver'){
     <button c-boton [importancia]="importanciaBoton" (click)="seleccionarAccion(data.accion)">{{textoBoton}}</button>
@@ -6,5 +7,7 @@
     <button style="visibility: hidden;"></button>
     }
     <button c-boton mat-dialog-close>Cancelar</button>
-
   </mat-dialog-actions>
+} @else {
+  <c-curso-form [curso]="curso" (guardar)="onGuardarCurso($event)" (cancelar)="dialogRef.close()"></c-curso-form>
+}

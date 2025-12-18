@@ -102,10 +102,20 @@ export class Cursos {
     });
   }
 
-  ejecutarModificacion(curso: CourseInterface) {
-    // Lógica para modificar el curso
-    console.log('Modificando curso:', curso);
-    //pet HTTP para actualizar
+  ejecutarModificacion(cursoActualizado: CourseInterface) {
+    this.coursesHttpClient.updateCourse(cursoActualizado.id, cursoActualizado).subscribe({
+      next: () => {
+        const index = this.courses.findIndex(c => c.id === cursoActualizado.id);
+        if (index !== -1) {
+          this.courses[index] = cursoActualizado;
+          this.courses = [...this.courses];
+        }
+        console.log('Curso actualizado exitosamente');
+      },
+      error: (error: any) => {
+        console.error('Error al actualizar el curso:', error);
+      }
+    });
   }
 
   ejecutarBorrado(id: number) {

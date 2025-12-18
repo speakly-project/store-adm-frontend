@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CourseInterface } from '../../../models/CourseInterface';
 import { Boton } from "../c-boton/c-boton";
 import { CCursoCard } from '../c-curso-card/c-curso-card';
+import { CCursoForm } from '../c-curso-form/c-curso-form';
 @Component({
   selector: 'c-curso-dialog',
   imports: [
@@ -16,7 +17,8 @@ import { CCursoCard } from '../c-curso-card/c-curso-card';
     MatButtonModule,
     MatIconModule,
     Boton,
-    CCursoCard
+    CCursoCard,
+    CCursoForm
 ],
   templateUrl: './c-curso-dialog.html',
   styleUrl: './c-curso-dialog.scss',
@@ -61,5 +63,9 @@ export class CCursoDialog {
 
   seleccionarAccion(accion: string): void {
     this.dialogRef.close(accion);
+  }
+
+  onGuardarCurso(cursoActualizado: CourseInterface): void {
+    this.dialogRef.close({ accion: 'modificar', curso: cursoActualizado });
   }
 }
