@@ -5,13 +5,12 @@ import { loginGuard } from './guards/login-guard';
 import { Error } from './components/pages/error/error';
 import { Login } from './components/pages/login/login';
 import { Logout } from './components/pages/logout/logout';
+import { Users } from './components/pages/users/users';
 
 export const routes: Routes = [
-    { path: '', component: Home },
-    // {path: 'login', component: Login},
+    { path: '', component: Home, canActivate: [loginGuard] },
     { path: 'cursos', component: Cursos, canActivate: [loginGuard] },
-    // {path: 'cursos/:id', component: Cursos},
-    // {path: 'categorias', component: Categorias},
+    { path: 'users', component: Users, canActivate: [loginGuard] },
     { path: 'login', component: Login},
     { path: 'logout', component: Logout },
     { path: '**', redirectTo: '' },

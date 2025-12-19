@@ -14,7 +14,6 @@ export class AuthService {
     return new Observable((observer) => {
       const loginRequest = { email, password };
 
-      // Primero verificar si es admin
       this.httpClient.getUserByEmail(email).subscribe({
         next: (user) => {
           if (user.role !== 'ADMIN') {
@@ -22,7 +21,6 @@ export class AuthService {
             return;
           }
 
-          // Si es admin, proceder con el login
           this.httpClient.login(loginRequest).subscribe({
             next: (token: string) => {
               localStorage.setItem(this.TOKEN_KEY, token);

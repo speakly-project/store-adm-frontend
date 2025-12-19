@@ -57,4 +57,18 @@ export class CoursesHttpClient {
     getUserByUsername(username: string) {
         return this.Mihttp.get<UserInterface>(`${this.urlUsers}/username?username=${username}`);
     }
+    getAllUsers() {
+        return this.Mihttp.get<{ data: UserInterface[] }>(`${this.urlUsers}?pageSize=100`).pipe(
+            map(response => response.data)
+        );
+    }
+    createUser(user: any) {
+        return this.Mihttp.post(this.urlUsers, user);
+    }
+    updateUser(id: number, user: any) {
+        return this.Mihttp.put(`${this.urlUsers}/${id}`, user);
+    }
+    deleteUser(id: number) {
+        return this.Mihttp.delete(`${this.urlUsers}/${id}`);
+    }
 }

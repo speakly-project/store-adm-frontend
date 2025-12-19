@@ -170,6 +170,9 @@
     
     &__type-cell {
         padding: var(--cursos-type-cell-padding);
+        &--center {
+            text-align: center;
+        }
     }
 }
 

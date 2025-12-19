@@ -18,7 +18,12 @@
                             </button>
                     </li>
                     <li class="c-header__item">
-                            <button c-boton [tipo]="'underlined'" [importancia]="'primaria'"
+                            <button c-boton [tipo]="'underlined'" [importancia]="'primaria'" routerLink="/users">
+                            Usuarios
+                            </button>
+                    </li>
+                    <li class="c-header__item">
+                            <button c-boton [tipo]="'underlined'" [importancia]="'secundaria'"
                                     [routerLink]="!authService.isAuthenticated() ? '/login' : '/logout'">
                                 @if (!authService.isAuthenticated()) {
                                     Login
