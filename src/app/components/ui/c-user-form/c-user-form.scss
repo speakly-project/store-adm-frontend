@@ -30,6 +30,12 @@
     --c-user-form-input-font-size: var(--mlt-sys-font-size-14);
     --c-user-form-input-width: var(--mlt-sys-width-100p);
     --c-user-form-input-focus-border-color: var(--mlt-sys-primary-color-6);
+    --c-user-form-danger-color: var(--mlt-sys-danger-color-5);
+    --c-user-form-error-font-size: var(--mlt-sys-font-size-12);
+    --c-user-form-error-font-weight: var(--mlt-sys-font-weight-500);
+    --c-user-form-error-margin-top: var(--mlt-sys-margin-4);
+    --c-user-form-row-gap: var(--mlt-sys-gap-24);
+    --c-user-form-col-min-width: var(--mlt-sys-width-220);
 
     padding: var(--c-user-form-padding);
     background-color: var(--c-user-form-bg);
@@ -64,6 +70,26 @@
         color: var(--c-user-form-label-color);
         font-size: var(--c-user-form-label-font-size);
         margin-bottom: var(--c-user-form-label-margin-bottom);
+
+        &--asterisk {
+            color: var(--c-user-form-danger-color);
+        }
+    }
+
+    &__error {
+        display: block;
+        margin-top: var(--c-user-form-error-margin-top);
+        font-size: var(--c-user-form-error-font-size);
+        color: var(--c-user-form-danger-color);
+    }
+
+    &__error-general {
+        color: var(--c-user-form-danger-color);
+        font-weight: var(--c-user-form-error-font-weight);
+    }
+
+    &__input.ng-invalid.ng-touched {
+        border-color: var(--c-user-form-danger-color);
     }
 
     &__input {
@@ -72,11 +98,26 @@
         padding: var(--c-user-form-input-padding);
         font-size: var(--c-user-form-input-font-size);
         width: var(--c-user-form-input-width);
+        font-family: inherit;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
         &:focus {
             outline: none;
             border-color: var(--c-user-form-input-focus-border-color);
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
         }
+    }
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: var(--c-user-form-row-gap);
+    }
+
+    &__col {
+        flex: 1 1 0;
+        min-width: var(--c-user-form-col-min-width);
     }
 
     &__actions {
@@ -86,5 +127,23 @@
         padding: var(--c-user-form-actions-padding);
         border-top: var(--c-user-form-actions-border-top);
         margin: var(--c-user-form-actions-margin);
+    }
+}
+
+@media (max-width: 600px) {
+    .c-user-form {
+        padding: 15px;
+
+        &__row {
+            flex-direction: column;
+        }
+
+        &__actions {
+            padding: 12px 15px;
+        }
+
+        &__header {
+            padding: 15px;
+        }
     }
 }

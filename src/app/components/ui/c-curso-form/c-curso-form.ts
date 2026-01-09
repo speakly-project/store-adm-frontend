@@ -6,6 +6,7 @@ import { Boton } from '../c-boton/c-boton';
 import { CoursesHttpClient } from '../../../services/courses-http-client';
 import { LanguageInterface } from '../../../models/LanguageInterface';
 import { LevelInterface } from '../../../models/LevelInterface';
+import { TeacherInterface } from '../../../models/TeacherInterface';
 
 @Component({
   selector: 'c-curso-form',
@@ -27,6 +28,7 @@ export class CCursoForm {
   teacherName!: string;
   allLanguages: LanguageInterface[] = [];
   allLevels: LevelInterface[] = [];
+  allTeachers: TeacherInterface[] = [];
   constructor(private formBuilder: FormBuilder, private coursesHttpClient: CoursesHttpClient) {
   }
 
@@ -42,6 +44,16 @@ export class CCursoForm {
     this.coursesHttpClient.getAllLevels().subscribe((data: LevelInterface[]) => {
       this.allLevels = data;
     });
+    this.coursesHttpClient.getAllTeachers().subscribe((data: TeacherInterface[]) => {
+      this.allTeachers = data;
+    });
+  }
+
+  checkTeacherSelection(teacherName: string | null): boolean {
+    if (!teacherName) {
+      return true;
+    }  
+    return this.allTeachers.some(teacher => teacher.username === teacherName);
   }
 
   crearFormulario(): void {
@@ -52,25 +64,28 @@ export class CCursoForm {
       durationHours: [this.curso.duration || 0, [Validators.required, Validators.min(1)]],
       language: [this.curso.language || '', Validators.required],
       level: [this.curso.level || '', Validators.required],
-      teacher: ['', Validators.required]
+      teacher: [this.curso.teacher || '', Validators.required]
     });
   }
 
   onGuardar(): void {
-    if (this.formulario.valid) {
-      const cursoActualizado: CourseInterface = {
-        ...this.curso,
-        title: this.formulario.value.title,
-        description: this.formulario.value.description,
-        price: this.formulario.value.price,
-        duration: this.formulario.value.durationHours,
-        language: this.formulario.value.language,
-        level: this.formulario.value.level,
-        teacher: { ...this.curso.teacher, username: this.formulario.value.teacher }
-      };
-
-      this.guardar.emit(cursoActualizado);
+    if (this.formulario.invalid) {
+      this.formulario.markAllAsTouched();
+      return;
     }
+
+    const cursoActualizado: CourseInterface = {
+      ...this.curso,
+      title: this.formulario.value.title,
+      description: this.formulario.value.description,
+      price: this.formulario.value.price,
+      duration: this.formulario.value.durationHours,
+      language: this.formulario.value.language,
+      level: this.formulario.value.level,
+      teacher: { ...this.curso.teacher, username: this.formulario.value.teacher }
+    };
+
+    this.guardar.emit(cursoActualizado);
   }
 
   onCancelar(): void {

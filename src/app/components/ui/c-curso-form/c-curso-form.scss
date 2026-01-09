@@ -38,7 +38,11 @@
     --c-curso-form-col-min-width: var(--mlt-sys-width-220);
     --c-curso-form-col-padding-left: var(--mlt-sys-padding-0);
     --c-curso-form-col-padding-right: var(--mlt-sys-padding-0);
-
+    --c-curso-form-danger-color: var(--mlt-sys-danger-color-5);
+    --c-curso-form-error-font-size: var(--mlt-sys-font-size-12);
+    --c-curso-form-error-font-weight: var(--mlt-sys-font-weight-500);
+    --c-curso-form-error-margin-top: var(--mlt-sys-margin-4);
+    
     padding: var(--c-curso-form-padding);
     background-color: var(--c-curso-form-bg);
 
@@ -71,6 +75,25 @@
         color: var(--c-curso-form-label-color);
         font-size: var(--c-curso-form-label-font-size);
         margin-bottom: var(--c-curso-form-label-margin-bottom);
+        &--asterisk {
+            color: var(--c-curso-form-danger-color);
+        }
+    }
+
+    &__error {
+        display: block;
+        margin-top: var(--c-curso-form-error-margin-top);
+        font-size: var(--c-curso-form-error-font-size);
+        color: var(--c-curso-form-danger-color);
+    }
+    
+    &__error-general {
+        color: var(--c-curso-form-danger-color);
+        font-weight: var(--c-curso-form-error-font-weight);
+    }
+    
+    &__input.ng-invalid.ng-touched {
+        border-color: var(--c-curso-form-danger-color);
     }
 
     &__input {

@@ -7,12 +7,32 @@
 
 <form [formGroup]="formulario" class="c-user-form">
   <div class="c-user-form__group mb-3">
-    <label for="username" class="c-user-form__label">Nombre de usuario</label>
+    <label for="username" class="c-user-form__label">Nombre de usuario <span class="c-user-form__label--asterisk">*</span></label>
     <input type="text" class="c-user-form__input" id="username" formControlName="username">
+    @if (formulario.get('username')?.invalid && formulario.get('username')?.touched) {
+    <small class="c-user-form__error">
+      @if (formulario.get('username')?.errors?.['required']) {
+      El nombre de usuario es obligatorio
+      }
+      @if (formulario.get('username')?.errors?.['minlength']) {
+      El nombre de usuario debe tener al menos 3 caracteres
+      }
+    </small>
+    }
   </div>
   <div class="c-user-form__group mb-3">
-    <label for="email" class="c-user-form__label">Email</label>
+    <label for="email" class="c-user-form__label">Email <span class="c-user-form__label--asterisk">*</span></label>
     <input type="email" class="c-user-form__input" id="email" formControlName="email">
+    @if (formulario.get('email')?.invalid && formulario.get('email')?.touched) {
+    <small class="c-user-form__error">
+      @if (formulario.get('email')?.errors?.['required']) {
+      El email es obligatorio
+      }
+      @if (formulario.get('email')?.errors?.['email']) {
+      El email no tiene un formato válido
+      }
+    </small>
+    }
   </div>
   <div class="c-user-form__group mb-3">
     <label for="profilePictureUrl" class="c-user-form__label">URL de foto de perfil</label>
@@ -20,16 +40,32 @@
   </div>
   @if (!modoEdicion) {
   <div class="c-user-form__group mb-3">
-    <label for="password" class="c-user-form__label">Contraseña</label>
+    <label for="password" class="c-user-form__label">Contraseña <span class="c-user-form__label--asterisk">*</span></label>
     <input type="password" class="c-user-form__input" id="password" formControlName="password" placeholder="Mínimo 6 caracteres">
+    @if (formulario.get('password')?.invalid && formulario.get('password')?.touched) {
+    <small class="c-user-form__error">
+      @if (formulario.get('password')?.errors?.['required']) {
+      La contraseña es obligatoria
+      }
+      @if (formulario.get('password')?.errors?.['minlength']) {
+      La contraseña debe tener al menos 6 caracteres
+      }
+    </small>
+    }
   </div>
   }
   <div class="c-user-form__group mb-3">
-    <label for="role" class="c-user-form__label">Rol</label>
+    <label for="role" class="c-user-form__label">Rol <span class="c-user-form__label--asterisk">*</span></label>
     <select class="c-user-form__input" id="role" formControlName="role">
+      <option value="" disabled selected>Seleccione un rol</option>
       <option value="USER">Usuario</option>
       <option value="ADMIN">Administrador</option>
     </select>
+    @if (formulario.get('role')?.invalid && formulario.get('role')?.touched) {
+    <small class="c-user-form__error">
+      Se debe seleccionar un rol
+    </small>
+    }
   </div>
 </form>
 

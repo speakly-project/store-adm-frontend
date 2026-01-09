@@ -5,6 +5,7 @@ import { CourseInterface } from '../models/CourseInterface';
 import { LanguageInterface } from '../models/LanguageInterface';
 import { LevelInterface } from '../models/LevelInterface';
 import { UserInterface } from '../models/UserInterface';
+import { TeacherInterface } from '../models/TeacherInterface';
 
 @Injectable({
     providedIn: 'root'
@@ -48,6 +49,11 @@ export class CoursesHttpClient {
     }
     getAllLevels() {
         return this.Mihttp.get<{ data: LevelInterface[] }>(this.urlLevels+`?pageSize=100`).pipe(
+            map(response => response.data)
+        );
+    }
+    getAllTeachers() {
+        return this.Mihttp.get<{ data: TeacherInterface[] }>(this.urlUsers + `?pageSize=100`).pipe(
             map(response => response.data)
         );
     }
