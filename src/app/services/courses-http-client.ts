@@ -15,7 +15,6 @@ export class CoursesHttpClient {
     constructor(private Mihttp: HttpClient) { }
 
     urlCourses = "http://localhost:8080/api/speakly/courses";
-    urlCoursesWithTeachers = "http://localhost:8080/api/speakly/courses/with-teachers";
     urlLanguages = "http://localhost:8080/api/speakly/languages";
     urlLevels = "http://localhost:8080/api/speakly/levels";
     urlUsers = "http://localhost:8080/api/speakly/users";
@@ -24,14 +23,6 @@ export class CoursesHttpClient {
         return this.Mihttp.get<{ data: CourseInterface[] }>(this.urlCourses+`?pageSize=100`).pipe(
             map(response => response.data)
         );
-    }
-    getAllCoursesWithTeachers() {
-        return this.Mihttp.get<{ data: CourseInterface[] }>(this.urlCoursesWithTeachers+`?pageSize=100`).pipe(
-            map(response => response.data)
-        );
-    }
-    getCourseById(id: number) {
-        return this.Mihttp.get(this.urlCourses + '/' + id);
     }
     deleteCourse(id: number) {
         return this.Mihttp.delete(this.urlCourses + '/' + id);

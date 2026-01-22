@@ -1,5 +1,6 @@
 export interface LoginUserInterface {
   id: number;
-  email: string;
+  username: string;
+  email?: string;
   role: 'ADMIN' | 'USER';
 }

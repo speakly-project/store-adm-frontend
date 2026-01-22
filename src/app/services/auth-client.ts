@@ -24,8 +24,8 @@ export class AuthClient {
   getCurrentUserFromToken(): Observable<LoginUserInterface> {
     return this.HttpClient.get<LoginUserInterface>(`${this.apiUrl}/auth`);
   }
-  getUserByEmail(email: string): Observable<LoginUserInterface> {
-    return this.HttpClient.get<LoginUserInterface>(`${this.apiUrl}/users/email?email=${email}`);
+  getUserByUsername(username: string): Observable<LoginUserInterface> {
+    return this.HttpClient.get<LoginUserInterface>(`${this.apiUrl}/users/username?username=${username}`);
   }
 
   getUserById(userId: number): Observable<UserInterface> {

@@ -30,7 +30,7 @@ export class Cursos {
   selectedLevel: string = 'All';
 
   ngOnInit() {
-    this.coursesHttpClient.getAllCoursesWithTeachers().subscribe((data: any) => {
+    this.coursesHttpClient.getAllCourses().subscribe((data: any) => {
       this.courses = data ?? [];
       this.allCourses = data ?? [];
     });
@@ -155,7 +155,7 @@ export class Cursos {
 
         this.coursesHttpClient.updateCourse(cursoActualizado.id, cursoRequest).subscribe({
           next: () => {
-            this.coursesHttpClient.getAllCoursesWithTeachers().subscribe((data: any) => {
+            this.coursesHttpClient.getAllCourses().subscribe((data: any) => {
               this.courses = data;
               this.allCourses = data;
             });
@@ -194,7 +194,7 @@ export class Cursos {
 
         this.coursesHttpClient.createCourse(cursoRequest).subscribe({
           next: (response: any) => {
-            this.coursesHttpClient.getAllCoursesWithTeachers().subscribe((data: any) => {
+            this.coursesHttpClient.getAllCourses().subscribe((data: any) => {
               this.courses = data;
               this.allCourses = data;
             });

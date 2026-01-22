@@ -10,11 +10,11 @@ export class AuthService {
   httpClient = inject(AuthClient);
   private readonly TOKEN_KEY = 'authToken';
 
-  login(email: string, password: string): Observable<string> {
+  login(username: string, password: string): Observable<string> {
     return new Observable((observer) => {
-      const loginRequest = { email, password };
+      const loginRequest = { username, password };
 
-      this.httpClient.getUserByEmail(email).subscribe({
+      this.httpClient.getUserByUsername(username).subscribe({
         next: (user) => {
           if (user.role !== 'ADMIN') {
             observer.error('Acceso denegado: no es administrador');
