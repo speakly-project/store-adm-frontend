@@ -6,6 +6,7 @@ import { LanguageInterface } from '../models/LanguageInterface';
 import { LevelInterface } from '../models/LevelInterface';
 import { UserInterface } from '../models/UserInterface';
 import { TeacherInterface } from '../models/TeacherInterface';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -14,10 +15,10 @@ export class CoursesHttpClient {
 
     constructor(private Mihttp: HttpClient) { }
 
-    urlCourses = "http://localhost:8080/api/speakly/courses";
-    urlLanguages = "http://localhost:8080/api/speakly/languages";
-    urlLevels = "http://localhost:8080/api/speakly/levels";
-    urlUsers = "http://localhost:8080/api/speakly/users";
+    urlCourses = `${environment.apiUrl}/api/speakly/courses`;
+    urlLanguages = `${environment.apiUrl}/api/speakly/languages`;
+    urlLevels = `${environment.apiUrl}/api/speakly/levels`;
+    urlUsers = `${environment.apiUrl}/api/speakly/users`;
 
     getAllCourses() {
         return this.Mihttp.get<{ data: CourseInterface[] }>(this.urlCourses+`?pageSize=100`).pipe(

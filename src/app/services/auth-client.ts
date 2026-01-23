@@ -3,13 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { UserInterface } from '../models/UserInterface';
 import { LoginUserInterface } from '../models/LoginUserInterface';
+import { environment } from '../../environments/environment.development';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthClient {
-  apiUrl = 'http://localhost:8080/api/speakly';
+  apiUrl = `${environment.apiUrl}/api/speakly`;
 
   HttpClient = inject(HttpClient);
 
