@@ -15,10 +15,12 @@ export class CoursesHttpClient {
 
     constructor(private Mihttp: HttpClient) { }
 
-    urlCourses = `${environment.apiUrl}/api/speakly/courses`;
-    urlLanguages = `${environment.apiUrl}/api/speakly/languages`;
-    urlLevels = `${environment.apiUrl}/api/speakly/levels`;
-    urlUsers = `${environment.apiUrl}/api/speakly/users`;
+    private readonly baseUrl = environment.apiUrl + 'api/speakly/';
+    
+    urlCourses = `${this.baseUrl}courses`;
+    urlLanguages = `${this.baseUrl}languages`;
+    urlLevels = `${this.baseUrl}levels`;
+    urlUsers = `${this.baseUrl}users`;
 
     getAllCourses() {
         return this.Mihttp.get<{ data: CourseInterface[] }>(this.urlCourses+`?pageSize=100`).pipe(

@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root',
 })
 export class AuthClient {
-  apiUrl = `${environment.apiUrl}/api/speakly`;
+  apiUrl = `${environment.apiUrl}api/speakly`;
 
   HttpClient = inject(HttpClient);
 
